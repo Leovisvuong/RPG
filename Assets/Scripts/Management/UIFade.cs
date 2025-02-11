@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class UIFade : Singleton<UIFade>
 {
-    [SerializeField] private Image fadeScreen;
+    public Image fadeScreen;
+
     [SerializeField] private float fadeSpeed = 1f;
 
     private IEnumerator fadeRoutine;
@@ -27,6 +28,10 @@ public class UIFade : Singleton<UIFade>
 
         fadeRoutine = FadeRoutine(0);
         StartCoroutine(fadeRoutine);
+    }
+
+    public void FadeImidiately(float alpha){
+        fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, alpha);
     }
 
     private IEnumerator FadeRoutine(float targetAlpha){

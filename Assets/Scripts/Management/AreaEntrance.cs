@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AreaEntrance : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class AreaEntrance : MonoBehaviour
  
     private void Start(){
         if(transitionName == SceneManagement.Instance.sceneTransitionName){
+            if(transitionName == "Enter"){
+                UIFade.Instance.FadeImidiately(1);
+            }
             PlayerController.Instance.transform.position = this.transform.position;
             CameraController.Instance.SetPlayerCameraFollow();
             UIFade.Instance.FadeToClear();
+            Debug.Log(1);
         }
     }
 }

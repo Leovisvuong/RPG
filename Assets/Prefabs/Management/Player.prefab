@@ -431,6 +431,7 @@ MonoBehaviour:
   dashSpeed: 4
   myTrailRenderer: {fileID: 8962129140098616235}
   weaponCollider: {fileID: 8962129139912871081}
+  isDashing: 0
 --- !u!50 &8962129140838631664
 Rigidbody2D:
   serializedVersion: 4
