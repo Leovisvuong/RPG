@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class EnemyAI : MonoBehaviour
 {
+    public int maxAttack = 1;
     [SerializeField] private float roamChangeDirFloat = 2f;
     [SerializeField] private float attackRange = 5;
     [SerializeField] private MonoBehaviour enemyType;

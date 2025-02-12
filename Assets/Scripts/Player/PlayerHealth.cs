@@ -6,22 +6,26 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerHealth : Singleton<PlayerHealth>
 {
     public bool isDead {get; private set;}
-    [SerializeField] private int maxHealth = 3;
+        
     [SerializeField] private float knockBackThrustAmount = 10f;
     [SerializeField] private float damageRecoveryTime = 1f;
     [SerializeField] private float timeBetweenHealthRefresh = 5;
 
+    private int maxHealth;
     private Slider healthSlider;
     private int currentHealth;
     private bool canTakeDamage = true;
     private Knockback knockback;
     private Flash flash;
     private int healingRoutinesNum = 0;
+    private TextMeshProUGUI healthText;
 
+    const string HEALTH_NUMBER_TEXT = "Health Number";
     const string HEALTH_SLIDER_TEXT = "Health Slider";
     const string TOWN_TEXT = "Route 1";
     readonly int DEATH_HASH = Animator.StringToHash("Death");
@@ -36,8 +40,9 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     private void Start(){
         isDead = false;
+        SetMaxHealth();
         currentHealth = maxHealth;
-        UpdateHealthSlider();
+        UpdateHealthOutput();
     }
 
     private void OnCollisionStay2D(Collision2D other){
@@ -48,6 +53,11 @@ public class PlayerHealth : Singleton<PlayerHealth>
         }
     }
 
+    public void SetMaxHealth(){
+        maxHealth = PlayerAttribute.Instance.health;
+        UpdateHealthOutput();
+    }
+
     public void HealPlayer(int amount){
         if(currentHealth + amount < maxHealth){
             currentHealth += amount;
@@ -55,7 +65,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         else{
             currentHealth = maxHealth;
         }
-        UpdateHealthSlider();
+        UpdateHealthOutput();
     }
 
     public void TakeDamage(int damageAmount, Transform hitTransform){
@@ -69,7 +79,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         canTakeDamage = false;
         currentHealth -= damageAmount;
         StartCoroutine(DamageRecoveryRoutine());
-        UpdateHealthSlider();
+        UpdateHealthOutput();
         CheckIfPlayerDeath();
     }
 
@@ -100,13 +110,17 @@ public class PlayerHealth : Singleton<PlayerHealth>
         HealPlayer(1);
     }
 
-    private void UpdateHealthSlider(){
+    private void UpdateHealthOutput(){
         if(healthSlider == null){
             healthSlider = GameObject.Find(HEALTH_SLIDER_TEXT).GetComponent<Slider>();
+        }
+        if(healthText == null){
+            healthText = GameObject.Find(HEALTH_NUMBER_TEXT).GetComponent<TextMeshProUGUI>();
         }
 
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
+        healthText.text = currentHealth.ToString() + "/" + maxHealth.ToString();
 
         if(currentHealth < maxHealth && healingRoutinesNum == 0){
             healingRoutinesNum++;

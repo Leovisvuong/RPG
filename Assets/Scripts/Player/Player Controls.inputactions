@@ -168,39 +168,6 @@
                     "action": "KeyBoard",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b8b39724-5880-45f0-b384-96815e865420",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "Scale(factor=4)",
-                    "groups": "",
-                    "action": "KeyBoard",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "daf22c75-ae78-4708-840a-eaffe104dc4a",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "Scale(factor=5)",
-                    "groups": "",
-                    "action": "KeyBoard",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e36c5858-b861-4fb5-ae16-cc3547744b21",
-                    "path": "<Keyboard>/6",
-                    "interactions": "",
-                    "processors": "Scale(factor=6)",
-                    "groups": "",
-                    "action": "KeyBoard",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

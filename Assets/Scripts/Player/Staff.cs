@@ -26,6 +26,10 @@ public class Staff : MonoBehaviour, IWeapon
             Stamina.Instance.UseStamina(weaponInfo.weaponStaminaCost);
             myAnimator.SetTrigger(ATTACK_HASH);
         }
+        else{
+            Warning.Instance.warnText.text = "Run Out Of Stamina!";
+            Warning.Instance.DoWarn();
+        }
     }
 
     public void SpawnStaffProjectileAnimationEvent(){

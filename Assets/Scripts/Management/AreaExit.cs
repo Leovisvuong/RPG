@@ -28,6 +28,7 @@ public class AreaExit : MonoBehaviour
     public void LoadScene(){
         SceneManagement.Instance.SetTransitionName(sceneTransitionName);
         if(GetComponent<BoxCollider2D>()){
+
             UIFade.Instance.FadeToBlack();
             StartCoroutine(LoadSceneRoutine());
         }

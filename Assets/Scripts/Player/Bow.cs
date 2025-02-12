@@ -19,11 +19,15 @@ public class Bow : MonoBehaviour, IWeapon
     }
 
     public void Attack(){
-            if(Stamina.Instance.currentStamina > 0){
+        if(Stamina.Instance.currentStamina > 0){
             Stamina.Instance.UseStamina(weaponInfo.weaponStaminaCost);
             myAnimator.SetTrigger(FIRE_HASH); 
             GameObject newArrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, ActiveWeapon.Instance.transform.rotation);
             newArrow.GetComponent<Projectile>().UpdateProjectileRange(weaponInfo.weaponRange);
+        }
+        else{
+            Warning.Instance.warnText.text = "Run Out Of Stamina!";
+            Warning.Instance.DoWarn();
         }
     }
     public WeaponInfo GetWeaponInfo()

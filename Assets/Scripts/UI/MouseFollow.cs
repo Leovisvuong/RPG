@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouseFollow : MonoBehaviour
 {
     private void Update(){
-        FaceMouse();
+        if(!FreezeManager.Instance.gamePause) FaceMouse();
     }
 
     private void FaceMouse(){

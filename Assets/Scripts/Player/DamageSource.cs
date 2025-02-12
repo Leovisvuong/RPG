@@ -1,19 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class DamageSource : MonoBehaviour
 {
-    private int damageAmount;
+    public MonoBehaviour currentActiveWeapon;
     [SerializeField] private bool isMelee = false;
+    private int damageAmount;
 
-    private void Start(){
-        MonoBehaviour currentActiveWeapon = ActiveWeapon.Instance.currentActiveWeapon;
-        damageAmount = (currentActiveWeapon as IWeapon).GetWeaponInfo().weaponDamage;
+    private void Start()
+    {
+        currentActiveWeapon = ActiveWeapon.Instance.currentActiveWeapon;
     }
+
     private void OnTriggerEnter2D(Collider2D other){
         EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
         MagicLaser magicLaser = GetComponent<MagicLaser>();
+        
+        if(magicLaser){
+            damageAmount = (currentActiveWeapon as IWeapon).GetWeaponInfo().weaponDamage + PlayerAttribute.Instance.magic;
+        }
+        else{
+            damageAmount = (currentActiveWeapon as IWeapon).GetWeaponInfo().weaponDamage + PlayerAttribute.Instance.attack;
+        }
+        
         enemyHealth?.TakeDamage(damageAmount);
 
         if((other.gameObject.GetComponent<GrapeProjectile>() || other.gameObject.GetComponent<Projectile>()) && !isMelee){

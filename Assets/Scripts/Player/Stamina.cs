@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,22 +12,32 @@ public class Stamina : Singleton<Stamina>
     
     private Slider staminaSlider;
     private int maxStamina;
-    private int startingStamina = 30;
+    private TextMeshProUGUI staminaText;
 
+    const string STAMINA_NUMBER_TEXT = "Stamina Number";
     const string STAMINA_SLIDER_TEXT = "Stamina Slider";
 
     protected override void Awake()
     {
         base.Awake();
-
-        maxStamina = startingStamina;
-        currentStamina = startingStamina;
     }
-    
+
+    private void Start()
+    {
+        setMaxStamina();
+        currentStamina = maxStamina;
+        UpdateStaminaOutput();
+    }
+
+    public void setMaxStamina(){
+        maxStamina = PlayerAttribute.Instance.stamina;
+        UpdateStaminaOutput();
+    }
+
     public void UseStamina(int amount){
         currentStamina -= amount;
         if(currentStamina <= 0) currentStamina = 0;
-        UpdateStaminaSlider();
+        UpdateStaminaOutput();
     }
 
     public void RefreshStamina(int amount){
@@ -34,9 +45,9 @@ public class Stamina : Singleton<Stamina>
             currentStamina += amount;
         }
         else{
-            currentStamina = startingStamina;
+            currentStamina = maxStamina;
         }
-        UpdateStaminaSlider();
+        UpdateStaminaOutput();
     }
 
     private IEnumerator RefreshStaminaRoutine(){
@@ -44,13 +55,17 @@ public class Stamina : Singleton<Stamina>
         RefreshStamina(1);
     }
 
-    private void UpdateStaminaSlider(){
+    private void UpdateStaminaOutput(){
         if(staminaSlider == null){
             staminaSlider = GameObject.Find(STAMINA_SLIDER_TEXT).GetComponent<Slider>();
         }
+        if(staminaText == null){
+            staminaText = GameObject.Find(STAMINA_NUMBER_TEXT).GetComponent<TextMeshProUGUI>();
+        }
 
-        staminaSlider.maxValue = startingStamina;
+        staminaSlider.maxValue = maxStamina;
         staminaSlider.value = currentStamina;
+        staminaText.text = currentStamina.ToString() + "/" + maxStamina.ToString();
         
         if(currentStamina < maxStamina){
             StopAllCoroutines();

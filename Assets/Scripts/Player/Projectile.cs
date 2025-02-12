@@ -9,11 +9,13 @@ public class Projectile : MonoBehaviour
     [SerializeField] private GameObject particleOnHitPrefabVFX;
     [SerializeField] private bool isEnemyProjecttile = false;
     [SerializeField] private float projectileRange = 10;
+    [SerializeField] private int projectileDamage;
 
     private Vector3 startPosition;
 
     private void Start(){
         startPosition = transform.position;
+        if(isEnemyProjecttile) projectileDamage = gameObject.transform.parent.GetComponent<EnemyAI>().maxAttack;
     }
 
     private void Update(){
@@ -41,7 +43,7 @@ public class Projectile : MonoBehaviour
         
         if(!other.isTrigger && (enemyHealth || indestructable || player)){
             if((player && isEnemyProjecttile) || (enemyHealth && !isEnemyProjecttile)){
-                player?.TakeDamage(1, transform);
+                player?.TakeDamage(projectileDamage, transform);
                 Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
@@ -52,6 +54,7 @@ public class Projectile : MonoBehaviour
         }
 
         if(damageSource && isEnemyProjecttile){
+            Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

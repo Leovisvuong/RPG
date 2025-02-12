@@ -1,36 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StoryManager : MonoBehaviour
 {
-    [SerializeField] private float timeBetweenTransition = 6f;
-    [SerializeField] private List<Image> storyTextImage = new List<Image>();
+    [SerializeField] private float timeBetweenTransition = 5f;
+    [SerializeField] private List<TextMeshProUGUI> storyText = new List<TextMeshProUGUI>();
     [SerializeField] private Button skipButton;
     [SerializeField] private float skipCoolDown = 1f;
 
-    public int i = 0;
-    private bool canSkip = true;
+    private int i = 0;
+    public bool canSkip = true;
 
     private void Start(){
-        FadeToBlackNextText();
+        FadeToBlackText();
         skipButton.onClick.AddListener(Skip);
     }
 
-    private void FadeToBlackNextText(){
-        if(i < storyTextImage.Count){
-            UIFade.Instance.fadeScreen = storyTextImage[i];
-            i++;
-            StartCoroutine(CountdownFadeToBlack());
+    private void FadeToBlackText(){
+        if(i < storyText.Count){
+            StartCoroutine(FadeRoutine(1));
         }
         else{
-            UIFade.Instance.FadeImidiately(0);
             GameObject exit = GameObject.Find("AreaExit");
             exit.GetComponent<AreaExit>().LoadScene();
         }
+    }
+
+    private void FadeToClearText(){
+        StartCoroutine(FadeRoutine(0));
     }
 
     private void Skip(){
@@ -38,27 +40,30 @@ public class StoryManager : MonoBehaviour
 
         canSkip = false;
         StopAllCoroutines();
-        UIFade.Instance.FadeImidiately(0);
-        FadeToBlackNextText();
+        storyText[i].color = new Color(storyText[i].color.r, storyText[i].color.g, storyText[i].color.b, 0);
+        i++;
+        FadeToBlackText();
         StartCoroutine(CountdownSkipCoolDown());
-    }
-
-    private IEnumerator CountdownFadeToBlack(){
-        if(i==1) yield return new WaitForSeconds(1.5f);
-
-        UIFade.Instance.FadeToBlack();
-        yield return new WaitForSeconds(timeBetweenTransition);
-        StartCoroutine(CountdownFadeToClear());
-    }
-
-    private IEnumerator CountdownFadeToClear(){
-        UIFade.Instance.FadeToClear();
-        yield return new WaitForSeconds(1);
-        FadeToBlackNextText();
     }
 
     private IEnumerator CountdownSkipCoolDown(){
         yield return new WaitForSeconds(skipCoolDown);
         canSkip = true;
+    }
+
+    private IEnumerator FadeRoutine(float targetAlpha){
+        while(!Mathf.Approximately(storyText[i].color.a,targetAlpha)){
+            float alpha = Mathf.MoveTowards(storyText[i].color.a, targetAlpha, Time.deltaTime);
+            storyText[i].color = new Color(storyText[i].color.r, storyText[i].color.g, storyText[i].color.b, alpha);
+            yield return null;
+        }
+        if(targetAlpha > 0){
+            yield return new WaitForSeconds(timeBetweenTransition);
+            FadeToClearText();
+        }
+        else{
+            i++;
+            FadeToBlackText();
+        }
     }
 }

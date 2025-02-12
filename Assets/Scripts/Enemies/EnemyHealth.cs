@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private int startingHealth = 3;
+    [SerializeField] private int maxHealth = 3;
     [SerializeField] private GameObject deathVFXPrefab;
     [SerializeField] private float knockBackThrust = 15f;
     private Knockback knockback;
@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
     private void Start(){
         flash = GetComponent<Flash>();
         knockback = GetComponent<Knockback>();
-        currentHealth = startingHealth;
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damage){

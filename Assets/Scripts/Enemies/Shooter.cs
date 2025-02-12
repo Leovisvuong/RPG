@@ -21,17 +21,17 @@ public class Shooter : MonoBehaviour, IEnemy
 
     private bool isShooting = false;
 
-    private void onValidate(){
-        if(oscillate) stagger = true;
-        if(!oscillate) stagger = false;
-        if(projectilePerBurst < 1) projectilePerBurst = 1;
-        if(burstCount < 1) burstCount = 1;
-        if(timeBetweenBursts < 0.1f) timeBetweenBursts = 0.1f;
-        if(restTime < 0.1f) restTime = 0.1f;
-        if(startingDistance < 0.1f) startingDistance = 0.1f;
-        if(angleSpread == 0) projectilePerBurst = 1;
-        if(bulletMoveSpeed <= 0) bulletMoveSpeed = 0.1f; 
-    }
+    // private void onValidate(){
+    //     if(oscillate) stagger = true;
+    //     if(!oscillate) stagger = false;
+    //     if(projectilePerBurst < 1) projectilePerBurst = 1;
+    //     if(burstCount < 1) burstCount = 1;
+    //     if(timeBetweenBursts < 0.1f) timeBetweenBursts = 0.1f;
+    //     if(restTime < 0.1f) restTime = 0.1f;
+    //     if(startingDistance < 0.1f) startingDistance = 0.1f;
+    //     if(angleSpread == 0) projectilePerBurst = 1;
+    //     if(bulletMoveSpeed <= 0) bulletMoveSpeed = 0.1f; 
+    // }
 
     public void Attack(){
         if(!isShooting){
@@ -69,6 +69,7 @@ public class Shooter : MonoBehaviour, IEnemy
                 Vector2 pos = FindBulletSpawnPos(currentAngle);
                 GameObject newBullet = Instantiate(bulletPrefab, pos, Quaternion.identity);
                 newBullet.transform.right = newBullet.transform.position - transform.position;
+                newBullet.gameObject.transform.parent = this.gameObject.transform;
 
                 if(newBullet.TryGetComponent(out Projectile projectile)){
                     projectile.UpdateMoveSpeed(bulletMoveSpeed);

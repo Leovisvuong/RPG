@@ -37,6 +37,10 @@ public class Sword : MonoBehaviour, IWeapon
             slashAnimation = Instantiate(SlashAnimationPrefab,slashAnimationSpawnPoint.position,Quaternion.identity);
             slashAnimation.transform.parent = this.transform.parent;
         }
+        else{
+            Warning.Instance.warnText.text = "Run Out Of Stamina!";
+            Warning.Instance.DoWarn();
+        }
     }
 
     public void DoneAttackAnimationEvent(){

@@ -28,6 +28,7 @@ public class Grape : MonoBehaviour, IEnemy
     }
 
     public void SpawnProjectileAnimationEvent(){
-        Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
+        GameObject grapeProjectile = Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
+        grapeProjectile.gameObject.transform.parent = this.transform;
     }
 }
