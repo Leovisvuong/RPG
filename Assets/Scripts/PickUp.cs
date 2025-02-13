@@ -82,7 +82,7 @@ public class PickUp : MonoBehaviour
     private void DetectPickUpType(){
         switch(pickUpType){
             case PickUpType.GoldCoin:
-                EconomyManager.Instance.UpdateCurrentGold();
+                EconomyManager.Instance.UpdateCurrentGold(1);
                 break;
             case PickUpType.HealthGlobe:
                 player.GetComponent<PlayerHealth>().HealPlayer(1);

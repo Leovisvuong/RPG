@@ -17,3 +17,7 @@ MonoBehaviour:
   weaponDamage: 1
   weaponRange: 12
   weaponStaminaCost: 1
+  weaponHealthUp: 0
+  weaponStaminaUp: 0
+  weaponDescription: used to deal physic attack (can be upgraded by woods)
+  weaponEquiped: 0

@@ -7,27 +7,32 @@ using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour
 {
     [SerializeField] private Button attr_Equip;
-    [SerializeField] private Button inventory;
+    [SerializeField] private Button inv_Shop;
     [SerializeField] private Button setting;
-    [SerializeField] private Button quit;
+    [SerializeField] private Button quitAttr_Equip;
+    [SerializeField] private Button quitInv_Shop;
     [SerializeField] private GameObject attr_EquipObj;
+    [SerializeField] private GameObject inv_ShopObj;
 
     private void Start()
     {
         Time.timeScale = 1;
         attr_Equip.onClick.AddListener(ActiveAttributeAndEquip);
-        inventory.onClick.AddListener(ActiveInventory);
+        inv_Shop.onClick.AddListener(ActiveInventoryAndShop);
         setting.onClick.AddListener(ActiveSetting);
-        quit.onClick.AddListener(DeactiveAll);
+        quitAttr_Equip.onClick.AddListener(DeactiveAll);
+        quitInv_Shop.onClick.AddListener(DeactiveAll);
     }
     private void ActiveAttributeAndEquip(){
+        if(inv_ShopObj.activeSelf) DeactiveAll();
         attr_EquipObj.SetActive(true);
-        quit.gameObject.SetActive(true);
         FreezeManager.Instance.DoFreeze();
     }
 
-    private void ActiveInventory(){
-
+    private void ActiveInventoryAndShop(){
+        if(attr_EquipObj.activeSelf) DeactiveAll();
+        inv_ShopObj.SetActive(true);
+        FreezeManager.Instance.DoFreeze();
     }
 
     private void ActiveSetting(){
@@ -36,7 +41,7 @@ public class ButtonManager : MonoBehaviour
 
     private void DeactiveAll(){
         attr_EquipObj.SetActive(false);
-        quit.gameObject.SetActive(false);
+        inv_ShopObj.SetActive(false);
         FreezeManager.Instance.StopFreeze();
     }
 }

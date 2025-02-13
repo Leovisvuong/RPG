@@ -41,7 +41,7 @@ public class AttributeUIManager : MonoBehaviour
         magicText.text = magic.ToString();
 
         PlayerHealth.Instance.SetMaxHealth();
-        Stamina.Instance.setMaxStamina();
+        Stamina.Instance.SetMaxStamina();
     }
 
     private void HealthUp(){

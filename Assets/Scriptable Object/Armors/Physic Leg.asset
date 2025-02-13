@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a76a75ff1687f5d449c2cc01bcd286ad, type: 3}
-  m_Name: Sword
+  m_Script: {fileID: 11500000, guid: f03eba619d8ab7a47abf221784c37e7b, type: 3}
+  m_Name: Physic Leg
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 1194157913210684129, guid: 19dbcd81c0648f44dac0ba8fe8d166d7, type: 3}
-  weaponCooldown: 0.5
-  weaponDamage: 1
-  weaponRange: 0
-  weaponStaminaCost: 1
+  armorHealthUp: 30
+  armorStaminaUp: 2
+  armorAttackUp: 15
+  armorMagicUp: 0
+  armorDescription: increase attribute when equipped
+  armorType: Leg

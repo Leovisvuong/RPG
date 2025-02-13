@@ -10,4 +10,9 @@ public class WeaponInfo : ScriptableObject
     public int weaponDamage;
     public int weaponRange;
     public int weaponStaminaCost;
+    public int weaponHealthUp;
+    public int weaponStaminaUp;
+    public string weaponDescription;
+    public string weaponName;
+    public bool weaponEquiped;
 }

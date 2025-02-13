@@ -24,13 +24,13 @@ public class Stamina : Singleton<Stamina>
 
     private void Start()
     {
-        setMaxStamina();
+        SetMaxStamina();
         currentStamina = maxStamina;
         UpdateStaminaOutput();
     }
 
-    public void setMaxStamina(){
-        maxStamina = PlayerAttribute.Instance.stamina;
+    public void SetMaxStamina(){
+        maxStamina = PlayerAttribute.Instance.stamina + ArmorManager.Instance.armorStamina;
         UpdateStaminaOutput();
     }
 
@@ -52,7 +52,7 @@ public class Stamina : Singleton<Stamina>
 
     private IEnumerator RefreshStaminaRoutine(){
         yield return new WaitForSeconds(timeBetweenStaminaRefresh);
-        RefreshStamina(1);
+        if(!FreezeManager.Instance.gamePause) RefreshStamina(1);
     }
 
     private void UpdateStaminaOutput(){

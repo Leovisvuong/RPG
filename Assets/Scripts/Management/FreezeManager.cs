@@ -5,11 +5,6 @@ using UnityEngine;
 public class FreezeManager : Singleton<FreezeManager>
 {
     public bool gamePause = false;
-    public bool mouseOverMainButtons = false;
-
-    public void SetMouseOverMainButtons(bool value){
-        mouseOverMainButtons = value;
-    }
 
     public void DoFreeze(){
         gamePause = true;

@@ -18,6 +18,7 @@ public class Staff : MonoBehaviour, IWeapon
     }
 
     private void Update(){
+        if(FreezeManager.Instance.gamePause) return;
         MouseFollowWithOffset();
     }
 

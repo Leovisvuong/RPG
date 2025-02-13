@@ -54,7 +54,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     }
 
     public void SetMaxHealth(){
-        maxHealth = PlayerAttribute.Instance.health;
+        maxHealth = PlayerAttribute.Instance.health + ArmorManager.Instance.armorHealth;
         UpdateHealthOutput();
     }
 
@@ -107,7 +107,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private IEnumerator HealPlayerRoutine(){
         yield return new WaitForSeconds(timeBetweenHealthRefresh);
         healingRoutinesNum = 0;
-        HealPlayer(1);
+        if(!FreezeManager.Instance.gamePause) HealPlayer(1);
     }
 
     private void UpdateHealthOutput(){

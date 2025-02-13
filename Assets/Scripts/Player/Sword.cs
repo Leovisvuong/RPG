@@ -25,7 +25,8 @@ public class Sword : MonoBehaviour, IWeapon
         slashAnimationSpawnPoint = GameObject.Find("SlashSpawnPoint").transform;
     }
     
-    void Update(){
+    private void Update(){
+        if(FreezeManager.Instance.gamePause) return;
         MouseFollowWithOffset();
     }
 

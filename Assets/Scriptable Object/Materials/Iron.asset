@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a76a75ff1687f5d449c2cc01bcd286ad, type: 3}
-  m_Name: Staff
+  m_Script: {fileID: 11500000, guid: 1beb4b5a85a0162488c7e4792cea538c, type: 3}
+  m_Name: Iron
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 3645358036987605163, guid: a81c470c20d954248bd999d458afa612, type: 3}
-  weaponCooldown: 1.2
-  weaponDamage: 2
-  weaponRange: 8
-  weaponStaminaCost: 3
+  materialNumber: 0
+  materialDescription: used to upgrade sword

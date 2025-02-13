@@ -42,8 +42,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void OnEnable() {
-        if(!FreezeManager.Instance.gamePause && !FreezeManager.Instance.mouseOverMainButtons) playerControls.Enable();
-        else playerControls.Disable();
+        playerControls.Enable();
     }
 
     private void OnDisable(){
@@ -64,6 +63,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void PlayerInput() {
+        if(FreezeManager.Instance.gamePause) return;
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
         myAnimator.SetFloat("moveX",movement.x);
         myAnimator.SetFloat("moveY",movement.y);
@@ -90,7 +90,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void Dash(){
-        if(!isDashing){
+        if(!isDashing && !FreezeManager.Instance.gamePause){
             if(Stamina.Instance.currentStamina <= 0){
                 Warning.Instance.warnText.text = "Run Out Of Stamina!";
                 Warning.Instance.DoWarn();
