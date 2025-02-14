@@ -48,7 +48,6 @@ public class Warning : Singleton<Warning>
             targetText.color = new Color(targetText.color.r, targetText.color.g, targetText.color.b, alpha);
             yield return null;
         }
-        Debug.Log(1);
 
         yield return new WaitForSeconds(warnExistTime);
 

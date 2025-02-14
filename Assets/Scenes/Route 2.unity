@@ -5959,6 +5959,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
+      propertyPath: experienceDropAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1528597739012913770, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -7128,6 +7132,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
+      propertyPath: experienceDropAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1528597739012913770, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -7451,6 +7459,10 @@ PrefabInstance:
     - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: maxHealth
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
+      propertyPath: experienceDropAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1528597739012913770, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: m_RootOrder
@@ -8621,6 +8633,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
+      propertyPath: experienceDropAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1528597739012913770, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -8816,6 +8832,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
+      propertyPath: experienceDropAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1528597739012913770, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9005,6 +9025,10 @@ PrefabInstance:
     - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: maxHealth
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
+      propertyPath: experienceDropAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1528597739012913770, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: m_RootOrder
@@ -56012,6 +56036,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
+      propertyPath: experienceDropAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1528597739012913770, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -60921,11 +60949,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 582082288819360137, guid: 136b03492e652444caa5f75a2701e56a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8378658
+      value: -5.6649113
       objectReference: {fileID: 0}
     - target: {fileID: 582082288819360137, guid: 136b03492e652444caa5f75a2701e56a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.29359
+      value: 2.5242999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 136b03492e652444caa5f75a2701e56a, type: 3}
@@ -61718,6 +61746,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2030989601, guid: 0701477cb716b634abe31a582894d69e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7854606295963336976, guid: 0701477cb716b634abe31a582894d69e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -65106,6 +65138,10 @@ PrefabInstance:
     - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: maxHealth
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1854022991040379445, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
+      propertyPath: experienceDropAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1528597739012913770, guid: 0614dfbd5bf7967468edcd63520c2df4, type: 3}
       propertyPath: m_RootOrder
