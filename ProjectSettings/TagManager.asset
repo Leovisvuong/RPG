@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sword Info Manager
+  - Staff Info Manager
+  - Bow Info Manager
   layers:
   - Default
   - TransparentFX

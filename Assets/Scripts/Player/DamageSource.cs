@@ -19,10 +19,10 @@ public class DamageSource : MonoBehaviour
         MagicLaser magicLaser = GetComponent<MagicLaser>();
         
         if(magicLaser){
-            damageAmount = (currentActiveWeapon as IWeapon).GetWeaponInfo().weaponDamage + PlayerAttribute.Instance.magic + ArmorManager.Instance.armorMagic;
+            damageAmount = (currentActiveWeapon as IWeapon).GetWeaponInfoManager().currentWeaponDamage + PlayerAttribute.Instance.magic + ArmorManager.Instance.armorMagic;
         }
         else{
-            damageAmount = (currentActiveWeapon as IWeapon).GetWeaponInfo().weaponDamage + PlayerAttribute.Instance.attack + ArmorManager.Instance.armorAttack;
+            damageAmount = (currentActiveWeapon as IWeapon).GetWeaponInfoManager().currentWeaponDamage + PlayerAttribute.Instance.attack + ArmorManager.Instance.armorAttack;
         }
 
         enemyHealth?.TakeDamage(damageAmount);

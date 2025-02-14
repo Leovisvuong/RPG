@@ -8,6 +8,7 @@ public class FreezeManager : Singleton<FreezeManager>
 
     public void DoFreeze(){
         gamePause = true;
+        Warning.Instance.FadeClearAll();
         Time.timeScale = 0;
     }
 

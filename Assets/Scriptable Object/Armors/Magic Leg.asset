@@ -15,6 +15,7 @@ MonoBehaviour:
   armorHealthUp: 10
   armorStaminaUp: 10
   armorAttackUp: 0
-  armorMagicUp: 15
-  armorDescription: increase attribute when equipped
+  armorMagicUp: 3
+  armorDescription: increase attribute when equipped (best for magic damage)
+  armorName: Magic Leg
   armorType: Leg

@@ -11,13 +11,14 @@ public class Sword : MonoBehaviour, IWeapon
     [SerializeField] private GameObject SlashAnimationPrefab;
     [SerializeField] private Transform slashAnimationSpawnPoint;
     [SerializeField] private float swordAttackCD = 0.5f;
-    [SerializeField] private WeaponInfo weaponInfo;
+    [SerializeField] private WeaponInfoManager weaponInfoManager;
 
     private Transform weaponCollider;
     private Animator myAnimator;
     private GameObject slashAnimation;
     private void Awake(){
         myAnimator = GetComponent<Animator>();
+        weaponInfoManager = GameObject.FindWithTag("Sword Info Manager").GetComponent<WeaponInfoManager>();
     }
 
     private void Start(){
@@ -32,15 +33,14 @@ public class Sword : MonoBehaviour, IWeapon
 
     public void Attack(){
         if(Stamina.Instance.currentStamina > 0){
-            Stamina.Instance.UseStamina(weaponInfo.weaponStaminaCost);
+            Stamina.Instance.UseStamina(weaponInfoManager.weaponInfo.weaponStaminaCost);
             myAnimator.SetTrigger("Attack");
             weaponCollider.gameObject.SetActive(true);
             slashAnimation = Instantiate(SlashAnimationPrefab,slashAnimationSpawnPoint.position,Quaternion.identity);
             slashAnimation.transform.parent = this.transform.parent;
         }
         else{
-            Warning.Instance.warnText.text = "Run Out Of Stamina!";
-            Warning.Instance.DoWarn();
+            Warning.Instance.DoWarn("Run Out Of Stamina!", Color.yellow);
         }
     }
 
@@ -80,8 +80,8 @@ public class Sword : MonoBehaviour, IWeapon
         }
     }
 
-    public WeaponInfo GetWeaponInfo()
+    public WeaponInfoManager GetWeaponInfoManager()
     {
-        return weaponInfo;
+        return weaponInfoManager;
     }
 }

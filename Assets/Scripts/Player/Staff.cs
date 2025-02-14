@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Staff : MonoBehaviour, IWeapon
 {
-    [SerializeField] private WeaponInfo weaponInfo;
+    [SerializeField] private WeaponInfoManager weaponInfoManager;
     [SerializeField] private GameObject magicLaser;
     [SerializeField] private Transform magicLaserSpawnPoint;
 
@@ -15,6 +15,7 @@ public class Staff : MonoBehaviour, IWeapon
 
     private void Awake(){
         myAnimator = GetComponent<Animator>();
+        weaponInfoManager = GameObject.FindWithTag("Staff Info Manager").GetComponent<WeaponInfoManager>();
     }
 
     private void Update(){
@@ -24,22 +25,21 @@ public class Staff : MonoBehaviour, IWeapon
 
     public void Attack(){
         if(Stamina.Instance.currentStamina > 0){
-            Stamina.Instance.UseStamina(weaponInfo.weaponStaminaCost);
+            Stamina.Instance.UseStamina(weaponInfoManager.weaponInfo.weaponStaminaCost);
             myAnimator.SetTrigger(ATTACK_HASH);
         }
         else{
-            Warning.Instance.warnText.text = "Run Out Of Stamina!";
-            Warning.Instance.DoWarn();
+            Warning.Instance.DoWarn("Run Out Of Stamina!", Color.yellow);
         }
     }
 
     public void SpawnStaffProjectileAnimationEvent(){
         GameObject newLaser = Instantiate(magicLaser, magicLaserSpawnPoint.position, quaternion.identity);
-        newLaser.GetComponent<MagicLaser>().UpdateLaserRange(weaponInfo.weaponRange);
+        newLaser.GetComponent<MagicLaser>().UpdateLaserRange(weaponInfoManager.weaponInfo.weaponRange);
     }
 
-    public WeaponInfo GetWeaponInfo(){
-        return weaponInfo;
+    public WeaponInfoManager GetWeaponInfoManager(){
+        return weaponInfoManager;
     }
 
     private void MouseFollowWithOffset(){

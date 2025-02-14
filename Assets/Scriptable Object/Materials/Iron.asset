@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1beb4b5a85a0162488c7e4792cea538c, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
-  materialNumber: 0
-  materialDescription: used to upgrade sword
+  materialDescription: used to reroll sword
+  materialName: Iron
+  materialSprite: {fileID: -2070492238, guid: eea24fc17c8e24a4ea6d78cbd5b0cfd2, type: 3}

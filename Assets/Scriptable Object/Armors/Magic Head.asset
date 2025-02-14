@@ -15,6 +15,7 @@ MonoBehaviour:
   armorHealthUp: 5
   armorStaminaUp: 30
   armorAttackUp: 0
-  armorMagicUp: 10
-  armorDescription: increase attribute when equipped
+  armorMagicUp: 5
+  armorDescription: increase attribute when equipped (best for magic damage)
+  armorName: Magic Head
   armorType: Head

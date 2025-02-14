@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76a75ff1687f5d449c2cc01bcd286ad, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  rerollMaterial: {fileID: 11400000, guid: 68b290b7f138ffb41b16533ffe119de4, type: 2}
   weaponPrefab: {fileID: 1194157913210684129, guid: 19dbcd81c0648f44dac0ba8fe8d166d7, type: 3}
   weaponCooldown: 0.5
   weaponDamage: 1
   weaponRange: 0
   weaponStaminaCost: 1
-  weaponHealthUp: 0
-  weaponStaminaUp: 0
-  weaponDescription: used to deal physic attack (can be upgraded by irons)
-  weaponEquiped: 0
+  weaponMaxDamage: 10
+  weaponDescription: 'used to deal physic damage (can reroll damage by irons) stamina
+    cost / fire: 1'
+  weaponName: Sword

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ArmorManager : Singleton<ArmorManager>
 {
-    [SerializeField] private List<Armor> armor;
+    [SerializeField] private List<ArmorInfoManager> armorInfoManagers;
 
     public int armorHealth;
     public int armorStamina;
@@ -19,13 +19,11 @@ public class ArmorManager : Singleton<ArmorManager>
 
     public void UpdateArmorAttribute(){
         ResetAttribute();
-        foreach(var i in armor){
-            ArmorInfo armorInfo = i.armorInfo;
-
+        foreach(var i in armorInfoManagers){
             if(i.isEquipped){
                 int tmp = 1;
-                if(armorInfo.armorType == "Arm" || armorInfo.armorType == "Leg") tmp++;
-                AddAttribute(armorInfo.armorHealthUp, armorInfo.armorStaminaUp, armorInfo.armorAttackUp * tmp, armorInfo.armorMagicUp * tmp);
+                if(i.armorInfo.armorType == "Arm" || i.armorInfo.armorType == "Leg") tmp++;
+                AddAttribute(i.armorInfo.armorHealthUp, i.armorInfo.armorStaminaUp, i.armorInfo.armorAttackUp * tmp, i.armorInfo.armorMagicUp * tmp);
             }
         }
         PlayerHealth.Instance.SetMaxHealth();

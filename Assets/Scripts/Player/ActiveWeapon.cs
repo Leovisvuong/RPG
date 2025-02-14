@@ -35,7 +35,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         currentActiveWeapon = newWeapon;
 
         AttackCooldown();
-        timeBetweenAttacks = (currentActiveWeapon as IWeapon).GetWeaponInfo().weaponCooldown;
+        timeBetweenAttacks = (currentActiveWeapon as IWeapon).GetWeaponInfoManager().weaponInfo.weaponCooldown;
     }
 
     public void WeaponNull(){

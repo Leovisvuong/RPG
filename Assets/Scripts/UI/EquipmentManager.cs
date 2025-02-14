@@ -12,7 +12,6 @@ public class EquipmentManager : Singleton<EquipmentManager>
         if(armorKind == "Physic"){
             foreach(var i in physicArmors){
                 if(i.name == "Physic " + armorType || i.name == "Physic " + armorType + " Left" || i.name == "Physic " + armorType + " Right"){
-                    Debug.Log(2);
                     magicArmors[physicArmors.IndexOf(i)].SetActive(false);
                     i.SetActive(true);
                 }

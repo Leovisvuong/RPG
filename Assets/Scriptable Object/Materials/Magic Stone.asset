@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1beb4b5a85a0162488c7e4792cea538c, type: 3}
   m_Name: Magic Stone
   m_EditorClassIdentifier: 
-  materialNumber: 0
-  materialDescription: used to upgrade staff
+  materialDescription: used to reroll staff
+  materialName: Magic Stone
+  materialSprite: {fileID: -186506888, guid: eea24fc17c8e24a4ea6d78cbd5b0cfd2, type: 3}

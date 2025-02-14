@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76a75ff1687f5d449c2cc01bcd286ad, type: 3}
   m_Name: Staff
   m_EditorClassIdentifier: 
+  rerollMaterial: {fileID: 11400000, guid: d348119c972924e429b160e67d3c29ef, type: 2}
   weaponPrefab: {fileID: 3645358036987605163, guid: a81c470c20d954248bd999d458afa612, type: 3}
   weaponCooldown: 1.2
   weaponDamage: 2
   weaponRange: 8
   weaponStaminaCost: 3
-  weaponHealthUp: 0
-  weaponStaminaUp: 0
-  weaponDescription: used to deal magic attack (can be upgraded by magic stones)
-  weaponEquiped: 0
+  weaponMaxDamage: 15
+  weaponDescription: 'used to deal magic damage (can reroll damage by magic stones)
+    stamina cost / fire: 3'
+  weaponName: Staff

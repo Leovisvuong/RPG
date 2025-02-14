@@ -17,6 +17,7 @@ public class AttributeUIManager : MonoBehaviour
     [SerializeField] private Button magicUp;
 
     private int point, health, stamina, attack, magic;
+
     private void Start()
     {
         UpdateValue();
@@ -27,6 +28,11 @@ public class AttributeUIManager : MonoBehaviour
         if(pointText == null) Debug.Log(1);
     }
 
+    private void OnEnable()
+    {
+        UpdateAttrText();
+    }
+
     public void UpdateValue(){
         point = PlayerAttribute.Instance.pointRemain;
         health = PlayerAttribute.Instance.health;
@@ -34,14 +40,18 @@ public class AttributeUIManager : MonoBehaviour
         attack = PlayerAttribute.Instance.attack;
         magic= PlayerAttribute.Instance.magic;
 
-        pointText.text = point.ToString();
-        healthText.text = health.ToString();
-        staminaText.text = stamina.ToString();
-        attackText.text = attack.ToString();
-        magicText.text = magic.ToString();
+        UpdateAttrText();
 
         PlayerHealth.Instance.SetMaxHealth();
         Stamina.Instance.SetMaxStamina();
+    }
+
+    private void UpdateAttrText(){
+        pointText.text = point.ToString();
+        healthText.text = health.ToString() +"<color=red>+" + ArmorManager.Instance.armorHealth;
+        staminaText.text = stamina.ToString() +"<color=red>+" + ArmorManager.Instance.armorStamina;
+        attackText.text = attack.ToString() +"<color=red>+" + ArmorManager.Instance.armorAttack;
+        magicText.text = magic.ToString() +"<color=red>+" + ArmorManager.Instance.armorMagic;
     }
 
     private void HealthUp(){

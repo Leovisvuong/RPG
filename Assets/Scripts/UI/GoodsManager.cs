@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GoodsManager : MonoBehaviour
 {
-    [SerializeField] private Armor armor;
+    [SerializeField] private ArmorInfoManager armorInfoManager;
     private int price;
     private string goodsName;
 
@@ -25,8 +25,8 @@ public class GoodsManager : MonoBehaviour
         EconomyManager.Instance.UpdateCurrentGold(-price);
         InventoryManager.Instance.ChangeItemNumber(goodsName, 1);
         
-        if(armor){
-            armor.isGained = true;
+        if(armorInfoManager){
+            armorInfoManager.isGained = true;
         }
     }
 }

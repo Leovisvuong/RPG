@@ -22,7 +22,7 @@ public class PlayerAttribute : Singleton<PlayerAttribute>
 
         attributeObj = GameObject.Find("Attribute");
         health = 15;
-        stamina = 30;
+        stamina = 2;
         attack = 1;
         magic = 1;
         level = 1;

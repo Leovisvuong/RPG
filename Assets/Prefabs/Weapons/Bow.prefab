@@ -40,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8242722761411912839}
-  - component: {fileID: 8242722761411912838}
   - component: {fileID: 6930539797464406013}
   - component: {fileID: 8272759756232028858}
+  - component: {fileID: 8552598374537630955}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -66,21 +66,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8242722761411912838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8242722761411912836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02823e34a83c09344a111c3be0a292ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponInfo: {fileID: 11400000, guid: 8bb0d619aa64b584bb7a534225d6cafa, type: 2}
-  arrowPrefab: {fileID: 9085842537966361365, guid: 70b3027f268fbd748ab82b23ede0ce95, type: 3}
-  arrowSpawnPoint: {fileID: 6479842840001200153}
 --- !u!212 &6930539797464406013
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -154,3 +139,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8552598374537630955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242722761411912836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02823e34a83c09344a111c3be0a292ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponInfoManager: {fileID: 0}
+  arrowPrefab: {fileID: 9085842537966361365, guid: 70b3027f268fbd748ab82b23ede0ce95, type: 3}
+  arrowSpawnPoint: {fileID: 6479842840001200153}

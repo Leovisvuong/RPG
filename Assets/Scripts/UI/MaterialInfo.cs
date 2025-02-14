@@ -6,4 +6,6 @@ using UnityEngine;
 public class MaterialInfo : ScriptableObject
 {
     public string materialDescription;
+    public string materialName;
+    public Sprite materialSprite;
 }

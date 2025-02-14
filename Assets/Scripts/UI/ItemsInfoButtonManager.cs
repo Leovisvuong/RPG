@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,17 +8,20 @@ using UnityEngine.UI;
 
 public class ItemsInfoButtonManager : MonoBehaviour
 {
-    [SerializeField] private WeaponInfo weaponInfo;
+    [SerializeField] private WeaponInfoManager weaponInfoManager;
     [SerializeField] private MaterialInfo materialInfo;
-    [SerializeField] private Armor armor;
+    [SerializeField] private ArmorInfoManager armorInfoManager;
     [SerializeField] private GameObject infoUIWithAttributes;
     [SerializeField] private GameObject infoUINoAttributes;
     [SerializeField] private GameObject infoUI;
     [SerializeField] private Image infoImage;
+    [SerializeField] private Image materialImage;
     [SerializeField] private Button quitInfo;
     [SerializeField] private Button equip;
+    [SerializeField] private Button reroll;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private TextMeshProUGUI attributeText;
+    [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private bool isInventoryItem;
 
     private Button enterInfoUI;
@@ -32,22 +34,81 @@ public class ItemsInfoButtonManager : MonoBehaviour
     private void Start()
     {
         enterInfoUI.onClick.AddListener(ActiveInfoUI);
-        if(quitInfo) quitInfo.onClick.AddListener(DeactiveInfoUI);
-        if(armor && isInventoryItem) equip.onClick.AddListener(EquipArmor);
+        if(quitInfo){
+            quitInfo.onClick.AddListener(DeactiveInfoUI);
+        }
+
+        if(armorInfoManager && isInventoryItem){
+            equip.onClick.AddListener(EquipArmor);
+        }
+
+        if(weaponInfoManager){
+            reroll.onClick.AddListener(RerollWeapon);
+        }
     }
 
     private void EquipArmor(){
-        if(armor.isGained && !armor.isEquipped && GetComponentInChildren<Button>().gameObject.GetComponent<Image>().sprite == infoImage.sprite){
+        if(armorInfoManager.isGained && !armorInfoManager.isEquipped && GetComponentInChildren<Button>().gameObject.GetComponent<Image>().sprite == infoImage.sprite){
             string armorKind;
-            armor.isEquipped = true;
-            armor.ChangeOppositeEquipStatus();
+            armorInfoManager.isEquipped = true;
+            armorInfoManager.ChangeOppositeArmorEquip();
             
-            if(armor.armorInfo.armorAttackUp > 0) armorKind = "Physic";
+            if(armorInfoManager.armorInfo.armorAttackUp > 0) armorKind = "Physic";
             else armorKind = "Magic";
 
-            EquipmentManager.Instance.ActivateArmor(armorKind, armor.armorInfo.armorType);
+            EquipmentManager.Instance.ActivateArmor(armorKind, armorInfoManager.armorInfo.armorType);
             ArmorManager.Instance.UpdateArmorAttribute();
         }
+    }
+
+    private void RerollWeapon(){
+        string weaponRerollName = weaponInfoManager.weaponInfo.weaponName;
+
+        if(GetComponentInChildren<Button>().gameObject.GetComponent<Image>().sprite != infoImage.sprite) return;
+
+        switch(weaponRerollName){
+            case "Sword":
+                if(InventoryManager.Instance.GetItemNumer("Iron") > 0){
+                    InventoryManager.Instance.ChangeItemNumber("Iron",-1);
+                }
+                else{
+                    return;
+                }
+                break;
+            case "Staff":
+                if(InventoryManager.Instance.GetItemNumer("Magic Stone") > 0){
+                    InventoryManager.Instance.ChangeItemNumber("Magic Stone",-1);
+                }
+                else{
+                    return;
+                }
+                break;
+            case "Bow":
+                if(InventoryManager.Instance.GetItemNumer("Wood") > 0){
+                    InventoryManager.Instance.ChangeItemNumber("Wood",-1);
+                }
+                else{
+                    return;
+                }
+                break;
+        }
+
+        int rerollPercentNumber = Random.Range(0,1050);
+        int newWeaponDamage = weaponInfoManager.currentWeaponMaxDamage * rerollPercentNumber / 1000;
+        if(newWeaponDamage == 0) newWeaponDamage = 1;
+        if(newWeaponDamage == weaponInfoManager.currentWeaponMaxDamage){
+            if(weaponRerollName == "Staff"){
+                if(weaponInfoManager.currentWeaponMaxDamage < 150){
+                    weaponInfoManager.currentWeaponMaxDamage += 15;
+                }
+            }
+            else if(weaponInfoManager.currentWeaponMaxDamage < 100){
+                weaponInfoManager.currentWeaponMaxDamage += 10;
+            }
+        }
+        weaponInfoManager.currentWeaponDamage = newWeaponDamage;
+        ActiveInfoUI();
+    
     }
 
     private void ActiveInfoUI(){
@@ -56,34 +117,49 @@ public class ItemsInfoButtonManager : MonoBehaviour
         if(materialInfo){
             infoUI.SetActive(true);
             equip.gameObject.SetActive(false);
+            reroll.gameObject.SetActive(false);
             infoUINoAttributes.SetActive(true);
             infoUIWithAttributes.SetActive(false);
             attributeText.gameObject.SetActive(false);
 
+            itemName.text = materialInfo.materialName;
             descriptionText.text = materialInfo.materialDescription;
         }
 
-        if(armor){
+        if(armorInfoManager){
             infoUI.SetActive(true);
-            if(isInventoryItem) equip.gameObject.SetActive(true);
-            else equip.gameObject.SetActive(false);
+            
+            if(isInventoryItem){
+                equip.gameObject.SetActive(true);
+            }
+            else{
+                equip.gameObject.SetActive(false);
+            }
+
+            reroll.gameObject.SetActive(false);
             infoUIWithAttributes.SetActive(true);
             infoUINoAttributes.SetActive(false);
             attributeText.gameObject.SetActive(true);
 
-            descriptionText.text = armor.armorInfo.armorDescription;
-            attributeText.text = "+" + armor.armorInfo.armorHealthUp.ToString() + "\n+" + armor.armorInfo.armorStaminaUp.ToString() + "\n+" + armor.armorInfo.armorAttackUp.ToString() + "\n+" + armor.armorInfo.armorMagicUp.ToString();
+            itemName.text = armorInfoManager.armorInfo.armorName + " Armor";
+            descriptionText.text = armorInfoManager.armorInfo.armorDescription;
+            attributeText.text = "+" + armorInfoManager.armorInfo.armorHealthUp.ToString() + "\n+" + armorInfoManager.armorInfo.armorStaminaUp.ToString() + "\n+" + armorInfoManager.armorInfo.armorAttackUp.ToString() + "\n+" + armorInfoManager.armorInfo.armorMagicUp.ToString();
         }
 
-        if(weaponInfo){
+        if(weaponInfoManager){
             infoUI.SetActive(true);
             equip.gameObject.SetActive(false);
+            reroll.gameObject.SetActive(true);
             infoUIWithAttributes.SetActive(true);
             infoUINoAttributes.SetActive(false);
             attributeText.gameObject.SetActive(true);
-            descriptionText.text = weaponInfo.weaponDescription;
-            if(weaponInfo.weaponName == "Staff") attributeText.text = "+" + weaponInfo.weaponHealthUp.ToString() + "\n+" + weaponInfo.weaponStaminaUp.ToString() + "\n+0\n+" + weaponInfo.weaponDamage.ToString();
-            else attributeText.text = "+" + weaponInfo.weaponHealthUp.ToString() + "\n+" + weaponInfo.weaponStaminaUp.ToString() + "\n+" + weaponInfo.weaponDamage.ToString() + "\n+0";
+
+            materialImage.sprite = weaponInfoManager.weaponInfo.rerollMaterial.materialSprite;
+
+            itemName.text = weaponInfoManager.weaponInfo.weaponName;
+            descriptionText.text = weaponInfoManager.weaponInfo.weaponDescription;
+            if(weaponInfoManager.weaponInfo.weaponName == "Staff") attributeText.text = "+0\n+0\n+0\n(+" + weaponInfoManager.currentWeaponDamage.ToString() + ")/" + weaponInfoManager.currentWeaponMaxDamage;
+            else attributeText.text = "+0\n+0\n(+" + weaponInfoManager.currentWeaponDamage.ToString() + ")/" + weaponInfoManager.currentWeaponMaxDamage + "\n+0";
         }
     }
 

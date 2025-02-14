@@ -92,8 +92,7 @@ public class PlayerController : Singleton<PlayerController>
     private void Dash(){
         if(!isDashing && !FreezeManager.Instance.gamePause){
             if(Stamina.Instance.currentStamina <= 0){
-                Warning.Instance.warnText.text = "Run Out Of Stamina!";
-                Warning.Instance.DoWarn();
+                Warning.Instance.DoWarn("Run Out Of Stamina!",Color.yellow);
                 return;
             }
             Stamina.Instance.UseStamina(1);

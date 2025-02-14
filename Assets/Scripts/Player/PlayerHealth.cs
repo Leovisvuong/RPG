@@ -55,6 +55,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     public void SetMaxHealth(){
         maxHealth = PlayerAttribute.Instance.health + ArmorManager.Instance.armorHealth;
+        if(currentHealth > maxHealth) currentHealth = maxHealth;
         UpdateHealthOutput();
     }
 
@@ -85,6 +86,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     private void CheckIfPlayerDeath(){
         if(currentHealth <= 0 && !isDead){
+            Warning.Instance.DoWarn("you died!", Color.red);
             isDead = true;
             Destroy(ActiveWeapon.Instance.gameObject);
             currentHealth = 0;

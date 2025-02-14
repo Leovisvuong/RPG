@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76a75ff1687f5d449c2cc01bcd286ad, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
+  rerollMaterial: {fileID: 11400000, guid: bde6d3686cd7cd842adac3f06c0ed1b7, type: 2}
   weaponPrefab: {fileID: 8242722761411912836, guid: 7e95e700f501ae74b80503b395d5980d, type: 3}
   weaponCooldown: 0.7
   weaponDamage: 1
   weaponRange: 12
   weaponStaminaCost: 1
-  weaponHealthUp: 0
-  weaponStaminaUp: 0
-  weaponDescription: used to deal physic attack (can be upgraded by woods)
-  weaponEquiped: 0
+  weaponMaxDamage: 10
+  weaponDescription: 'used to deal physic damage (can reroll damage by woods) stamina
+    cost / fire: 1'
+  weaponName: Bow

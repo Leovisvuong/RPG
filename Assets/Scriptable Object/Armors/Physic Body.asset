@@ -16,5 +16,6 @@ MonoBehaviour:
   armorStaminaUp: 10
   armorAttackUp: 1
   armorMagicUp: 0
-  armorDescription: increase attribute when equipped
+  armorDescription: increase attribute when equipped (best for physic damage)
+  armorName: Physic Body
   armorType: Body

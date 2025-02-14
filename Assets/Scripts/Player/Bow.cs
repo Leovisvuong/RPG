@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour, IWeapon
 {
-    [SerializeField] private WeaponInfo weaponInfo;
+    [SerializeField] private WeaponInfoManager weaponInfoManager;
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private Transform arrowSpawnPoint;
 
@@ -16,22 +16,22 @@ public class Bow : MonoBehaviour, IWeapon
 
     private void Awake(){
         myAnimator = GetComponent<Animator>();
+        weaponInfoManager = GameObject.FindWithTag("Bow Info Manager").GetComponent<WeaponInfoManager>();
     }
 
     public void Attack(){
         if(Stamina.Instance.currentStamina > 0){
-            Stamina.Instance.UseStamina(weaponInfo.weaponStaminaCost);
+            Stamina.Instance.UseStamina(weaponInfoManager.weaponInfo.weaponStaminaCost);
             myAnimator.SetTrigger(FIRE_HASH); 
             GameObject newArrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, ActiveWeapon.Instance.transform.rotation);
-            newArrow.GetComponent<Projectile>().UpdateProjectileRange(weaponInfo.weaponRange);
+            newArrow.GetComponent<Projectile>().UpdateProjectileRange(weaponInfoManager.weaponInfo.weaponRange);
         }
         else{
-            Warning.Instance.warnText.text = "Run Out Of Stamina!";
-            Warning.Instance.DoWarn();
+            Warning.Instance.DoWarn("Run Out Of Stamina!", Color.yellow);
         }
     }
-    public WeaponInfo GetWeaponInfo()
+    public WeaponInfoManager GetWeaponInfoManager()
     {
-        return weaponInfo;
+        return weaponInfoManager;
     }
 }

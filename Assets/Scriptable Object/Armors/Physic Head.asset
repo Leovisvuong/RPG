@@ -16,5 +16,6 @@ MonoBehaviour:
   armorStaminaUp: 15
   armorAttackUp: 3
   armorMagicUp: 0
-  armorDescription: increase attribute when equipped
+  armorDescription: increase attribute when equipped (best for physic damage)
+  armorName: Physic Head
   armorType: Head

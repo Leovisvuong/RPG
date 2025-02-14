@@ -31,6 +31,7 @@ public class Stamina : Singleton<Stamina>
 
     public void SetMaxStamina(){
         maxStamina = PlayerAttribute.Instance.stamina + ArmorManager.Instance.armorStamina;
+        if(currentStamina > maxStamina) currentStamina = maxStamina;
         UpdateStaminaOutput();
     }
 
