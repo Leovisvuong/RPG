@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Stamina : Singleton<Stamina>
 {
-    public int currentStamina {get; private set;}
+    public int currentStamina;
 
     [SerializeField] private float timeBetweenStaminaRefresh = 1.5f;
     
@@ -37,7 +37,7 @@ public class Stamina : Singleton<Stamina>
 
     public void UseStamina(int amount){
         currentStamina -= amount;
-        if(currentStamina <= 0) currentStamina = 0;
+        if(currentStamina < 0) currentStamina = 0;
         UpdateStaminaOutput();
     }
 

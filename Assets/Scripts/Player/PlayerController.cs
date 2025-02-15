@@ -9,6 +9,7 @@ public class PlayerController : Singleton<PlayerController>
 {
     
     public bool FacingLeft {get { return facingLeft; } }
+    public bool playerDied;
     
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float dashSpeed = 4f;
@@ -23,7 +24,7 @@ public class PlayerController : Singleton<PlayerController>
     private Knockback knockback;
     private float startingMoveSpeed;
     private bool facingLeft = false;
-    public bool isDashing = false;
+    private bool isDashing = false;
     protected override void Awake(){
         base.Awake();
         playerControls = new PlayerControls();
@@ -50,10 +51,12 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void Update() {
+        if(playerDied || FreezeManager.Instance.gamePause) return;
         PlayerInput();
     }
 
     private void FixedUpdate() {
+        if(playerDied || FreezeManager.Instance.gamePause) return;
         AdjustPlayerFacingDirection();
         Move();
     }
@@ -63,14 +66,13 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void PlayerInput() {
-        if(FreezeManager.Instance.gamePause) return;
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
         myAnimator.SetFloat("moveX",movement.x);
         myAnimator.SetFloat("moveY",movement.y);
     }
 
     private void Move() {
-        if(knockback.GettingKnockedBack || PlayerHealth.Instance.isDead){
+        if(knockback.GettingKnockedBack){
             return;
         }
         rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
@@ -90,7 +92,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void Dash(){
-        if(!isDashing && !FreezeManager.Instance.gamePause){
+        if(!isDashing && !FreezeManager.Instance.gamePause && !playerDied){
             if(Stamina.Instance.currentStamina <= 0){
                 Warning.Instance.DoWarn("Run Out Of Stamina!",Color.yellow);
                 return;

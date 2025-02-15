@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1009771660509005399}
   - component: {fileID: 5511954216663429248}
   - component: {fileID: -2221149863339582118}
+  - component: {fileID: -5523941939398376768}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -142,9 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d850309c51f1a2f49a352943f7f2e111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxAttack: 1
   roamChangeDirFloat: 2
-  attackRange: 0
-  enemyType: {fileID: 0}
+  attackRange: 5
+  enemyType: {fileID: -5523941939398376768}
   attackCoolDown: 2
   stopMovingWhileAttacking: 0
 --- !u!114 &1528597739012913777
@@ -193,9 +195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f345a6160c22dc44be5ade553f23223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
+  maxHealth: 3
   deathVFXPrefab: {fileID: 7336831661116483538, guid: 1e18714c96cc12d40bd79b0b7ad6f6d9, type: 3}
   knockBackThrust: 15
+  experienceDropAmount: 0
 --- !u!114 &1009771660509005399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +238,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe93a4f24b9768744b3ce44ec3c72acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldCoin: {fileID: 3399856085382906701, guid: 141740001f462854fa4f63e2afef0745, type: 3}
-  healthGlobe: {fileID: 3399856085382906701, guid: 69bb905cf3a6cd74aad6375943a963e9, type: 3}
-  stamineGlobe: {fileID: 3399856085382906701, guid: fb4062425ae86314f87990de00673fc0, type: 3}
+  pickUpPrefabs:
+  - {fileID: 3399856085382906701, guid: 141740001f462854fa4f63e2afef0745, type: 3}
+  - {fileID: 3399856085382906701, guid: fb4062425ae86314f87990de00673fc0, type: 3}
+  - {fileID: 3399856085382906701, guid: 69bb905cf3a6cd74aad6375943a963e9, type: 3}
+  maxPrefabAmount: 000000000000000000000000
+--- !u!114 &-5523941939398376768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528597739012913776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeffebdf88b3e0847b9625f6e5ea98c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 852540993984343156, guid: a0e8967ee8f607c4ea8cfa6cd27653d0, type: 3}
+  bulletMoveSpeed: 6
+  burstCount: 1
+  projectilePerBurst: 1
+  angleSpread: 0
+  startingDistance: 0.1
+  timeBetweenBursts: 0.3
+  restTime: 0.5
+  stagger: 0
+  oscillate: 0

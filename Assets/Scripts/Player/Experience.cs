@@ -37,7 +37,7 @@ public class Experience : Singleton<Experience>
             currentExp -= levelUpExp;
             currentLevel++;
             levelUpExp = Convert.ToInt32(currentLevel * 5 / 2);
-            PlayerAttribute.Instance.LevelUp();
+            PlayerAttribute.Instance.AddPoint();
         }
         UpdateExpOutput();
     }
@@ -53,6 +53,5 @@ public class Experience : Singleton<Experience>
         expSlider.maxValue = levelUpExp;
         expSlider.value = currentExp;
         expText.text = "level " + currentLevel + " (" + currentExp + "/" + levelUpExp + ")";        
-        Debug.Log(currentExp);
     }
 }

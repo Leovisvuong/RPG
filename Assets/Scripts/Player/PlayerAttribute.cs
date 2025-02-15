@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerAttribute : Singleton<PlayerAttribute>
 {
-    [SerializeField] private AttributeUIManager attributeManager;
+    // [SerializeField] private AttributeUIManager attributeManager;
     public int health;
     public int stamina;
     public int attack;
@@ -23,8 +23,8 @@ public class PlayerAttribute : Singleton<PlayerAttribute>
         pointRemain = 3;
     }
 
-    public void LevelUp(){
+    public void AddPoint(){
         pointRemain++;
-        attributeManager.UpdateValue();
+        // attributeManager.UpdateValue();
     }
 }

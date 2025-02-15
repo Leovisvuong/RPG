@@ -13,8 +13,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private bool stopMovingWhileAttacking = false;
 
     private bool canAttack = true;
-    private Transform myTransform;
-
     private enum State{
         Roaming,
         Attacking
@@ -28,7 +26,6 @@ public class EnemyAI : MonoBehaviour
     
     private void Awake(){
         enemyPathfinding = GetComponent<EnemyPathfinding>();
-        myTransform = GetComponent<Transform>();
         state = State.Roaming;
         
     }

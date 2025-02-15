@@ -39,7 +39,8 @@ public class GrapeProjectile : MonoBehaviour
 
             yield return null;
         }
-        Instantiate(SplatterPrefab, transform.position, quaternion.identity);
+        GameObject instance = Instantiate(SplatterPrefab, transform.position, quaternion.identity);
+        instance.transform.parent = this.transform.parent;
         Destroy(gameObject);
     }
 
@@ -54,6 +55,20 @@ public class GrapeProjectile : MonoBehaviour
         }
 
         Destroy(grapeShadow);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.GetComponent<PlayerController>()){
+            PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+            playerHealth?.TakeDamage(GetComponentInParent<EnemyAI>().maxAttack,transform);
+            Destroy(grapeShadow);
+            Destroy(gameObject);
+        }
+        else if(other.gameObject.GetComponent<DamageSource>()){
+            Destroy(grapeShadow);
+            Destroy(gameObject);
+        }
     }
 }
 

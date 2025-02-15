@@ -13,13 +13,11 @@ public class PlayerHealth : Singleton<PlayerHealth>
     public bool isDead {get; private set;}
         
     [SerializeField] private float knockBackThrustAmount = 10f;
-    [SerializeField] private float damageRecoveryTime = 1f;
     [SerializeField] private float timeBetweenHealthRefresh = 5;
 
     private int maxHealth;
     private Slider healthSlider;
     private int currentHealth;
-    private bool canTakeDamage = true;
     private Knockback knockback;
     private Flash flash;
     private int healingRoutinesNum = 0;
@@ -28,7 +26,8 @@ public class PlayerHealth : Singleton<PlayerHealth>
     const string HEALTH_NUMBER_TEXT = "Health Number";
     const string HEALTH_SLIDER_TEXT = "Health Slider";
     const string TOWN_TEXT = "Route 1";
-    readonly int DEATH_HASH = Animator.StringToHash("Death");
+    const string DEATH_HASH = "Death";
+    const string REVIVE_HASH = "Revive";
 
     protected override void Awake()
     {
@@ -70,26 +69,21 @@ public class PlayerHealth : Singleton<PlayerHealth>
     }
 
     public void TakeDamage(int damageAmount, Transform hitTransform){
-        if(!canTakeDamage){
-            return;
-        }
 
         ScreenShakeManager.Instance.ShakeScreeen();
         knockback.GetKnockBack(hitTransform, knockBackThrustAmount);
         StartCoroutine(flash.FlashRoutine());
-        canTakeDamage = false;
         currentHealth -= damageAmount;
-        StartCoroutine(DamageRecoveryRoutine());
+        if(currentHealth < 0) currentHealth = 0;
         UpdateHealthOutput();
         CheckIfPlayerDeath();
     }
 
     private void CheckIfPlayerDeath(){
         if(currentHealth <= 0 && !isDead){
-            Warning.Instance.DoWarn("you died!", Color.red);
             isDead = true;
-            Destroy(ActiveWeapon.Instance.gameObject);
-            currentHealth = 0;
+            PlayerController.Instance.playerDied = true;
+            ActiveWeapon.Instance.gameObject.SetActive(false);
             GetComponent<Animator>().SetTrigger(DEATH_HASH);
             StartCoroutine(DeathLoadSceneRoutine());
         }
@@ -97,13 +91,16 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     private IEnumerator DeathLoadSceneRoutine(){
         yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
+        SceneManagement.Instance.SetTransitionName("Enter");
+        isDead = false;
+        PlayerController.Instance.playerDied = false;
+        currentHealth = maxHealth;
+        Stamina.Instance.currentStamina = PlayerAttribute.Instance.stamina + ArmorManager.Instance.armorStamina;
+        UpdateHealthOutput();
+        Stamina.Instance.SetMaxStamina();
+        GetComponent<Animator>().SetTrigger(REVIVE_HASH);
+        ActiveWeapon.Instance.gameObject.SetActive(true);
         SceneManager.LoadScene(TOWN_TEXT);
-    }
-
-    private IEnumerator DamageRecoveryRoutine(){
-        yield return new WaitForSeconds(damageRecoveryTime);
-        canTakeDamage = true;
     }
 
     private IEnumerator HealPlayerRoutine(){

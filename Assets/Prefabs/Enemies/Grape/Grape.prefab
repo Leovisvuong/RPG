@@ -144,10 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d850309c51f1a2f49a352943f7f2e111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxAttack: 5
   roamChangeDirFloat: 2
-  attackRange: 5
+  attackRange: 10
   enemyType: {fileID: 3617676483803466014}
-  attackCoolDown: 2
+  attackCoolDown: 1
   stopMovingWhileAttacking: 1
 --- !u!114 &2810872971637797648
 MonoBehaviour:
@@ -195,9 +196,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f345a6160c22dc44be5ade553f23223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
+  maxHealth: 3
   deathVFXPrefab: {fileID: 7336831661116483538, guid: 05724730c18c5cf44a28e3d8a8482236, type: 3}
   knockBackThrust: 15
+  experienceDropAmount: 0
 --- !u!114 &4339214263454699318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,9 +239,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe93a4f24b9768744b3ce44ec3c72acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldCoin: {fileID: 3399856085382906701, guid: 141740001f462854fa4f63e2afef0745, type: 3}
-  healthGlobe: {fileID: 3399856085382906701, guid: 69bb905cf3a6cd74aad6375943a963e9, type: 3}
-  stamineGlobe: {fileID: 3399856085382906701, guid: fb4062425ae86314f87990de00673fc0, type: 3}
+  pickUpPrefabs:
+  - {fileID: 3399856085382906701, guid: 141740001f462854fa4f63e2afef0745, type: 3}
+  - {fileID: 3399856085382906701, guid: fb4062425ae86314f87990de00673fc0, type: 3}
+  - {fileID: 3399856085382906701, guid: 69bb905cf3a6cd74aad6375943a963e9, type: 3}
+  maxPrefabAmount: 000000000000000000000000
 --- !u!114 &3617676483803466014
 MonoBehaviour:
   m_ObjectHideFlags: 0

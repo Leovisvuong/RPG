@@ -5,19 +5,16 @@ using UnityEngine;
 
 public class DamageSource : MonoBehaviour
 {
-    public MonoBehaviour currentActiveWeapon;
     [SerializeField] private bool isMelee = false;
     private int damageAmount;
-
-    private void Start()
-    {
-        currentActiveWeapon = ActiveWeapon.Instance.currentActiveWeapon;
-    }
 
     private void OnTriggerEnter2D(Collider2D other){
         EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
         MagicLaser magicLaser = GetComponent<MagicLaser>();
+        MonoBehaviour currentActiveWeapon = ActiveWeapon.Instance.currentActiveWeapon;
         
+        if(!currentActiveWeapon) Debug.Log(9);
+
         if(magicLaser){
             damageAmount = (currentActiveWeapon as IWeapon).GetWeaponInfoManager().currentWeaponDamage + PlayerAttribute.Instance.magic + ArmorManager.Instance.armorMagic;
         }

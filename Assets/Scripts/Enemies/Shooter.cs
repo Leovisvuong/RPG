@@ -18,8 +18,10 @@ public class Shooter : MonoBehaviour, IEnemy
     [SerializeField] private float restTime = 0.5f;
     [SerializeField] private bool stagger;
     [SerializeField] private bool oscillate;
+    [SerializeField] private bool isBoss;
 
     private bool isShooting = false;
+    readonly int ATTACK_HASH = Animator.StringToHash("attack");
 
     // private void onValidate(){
     //     if(oscillate) stagger = true;
@@ -40,6 +42,7 @@ public class Shooter : MonoBehaviour, IEnemy
     }
 
     private IEnumerator ShootRoutine(){
+
         isShooting = true;
         float startAngle, currentAngle, angleStep, endAngle;
         float timeBetweenProjectiles = 0;
@@ -51,6 +54,9 @@ public class Shooter : MonoBehaviour, IEnemy
         }
 
         for(int i = 0; i < burstCount; i++){
+            if(isBoss){
+                GetComponent<Animator>().SetTrigger(ATTACK_HASH);
+            }
 
             if(!oscillate){
                 TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);

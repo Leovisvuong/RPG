@@ -128,6 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe93a4f24b9768744b3ce44ec3c72acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldCoin: {fileID: 3399856085382906701, guid: 141740001f462854fa4f63e2afef0745, type: 3}
-  healthGlobe: {fileID: 3399856085382906701, guid: 69bb905cf3a6cd74aad6375943a963e9, type: 3}
-  stamineGlobe: {fileID: 3399856085382906701, guid: fb4062425ae86314f87990de00673fc0, type: 3}
+  pickUpPrefabs:
+  - {fileID: 3399856085382906701, guid: 141740001f462854fa4f63e2afef0745, type: 3}
+  maxPrefabAmount: 05000000

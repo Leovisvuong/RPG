@@ -9,8 +9,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private GameObject particleOnHitPrefabVFX;
     [SerializeField] private bool isEnemyProjecttile = false;
     [SerializeField] private float projectileRange = 10;
-    [SerializeField] private int projectileDamage;
-
+    
+    private int projectileDamage;
     private Vector3 startPosition;
 
     private void Start(){

@@ -25,15 +25,14 @@ public class AttributeUIManager : MonoBehaviour
         staminaUp.onClick.AddListener(StaminaUp);
         attackUp.onClick.AddListener(AttackUp);
         magicUp.onClick.AddListener(MagicUp);
-        if(pointText == null) Debug.Log(1);
     }
 
     private void OnEnable()
     {
-        UpdateAttrText();
+        UpdateValue();
     }
 
-    public void UpdateValue(){
+    private void UpdateValue(){
         point = PlayerAttribute.Instance.pointRemain;
         health = PlayerAttribute.Instance.health;
         stamina = PlayerAttribute.Instance.stamina;
