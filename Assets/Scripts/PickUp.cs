@@ -20,14 +20,21 @@ public class PickUp : MonoBehaviour
     [SerializeField] private AnimationCurve animationCurve;
     [SerializeField] private float heighty = 1.5f;
     [SerializeField] private float popDuration = 1f;
-
+    
+    private Stack<GameObject> pickUpEffectPool;
+    private List<AudioSource> playingSounds;
     private Vector3 moveDir;
     private Rigidbody2D rb;
     private GameObject player;
+    private GameObject pickUpEffect;
+    private Vector3 playerPos;
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         player = PlayerController.Instance.gameObject;
+        pickUpEffectPool = new Stack<GameObject>();
+        playingSounds = new List<AudioSource>();
+        pickUpEffect = GameObject.Find("Pick Up Effect");
     }
 
     private void Start(){
@@ -35,7 +42,7 @@ public class PickUp : MonoBehaviour
     }
 
     private void Update(){
-        Vector3 playerPos = PlayerController.Instance.transform.position;
+        playerPos = PlayerController.Instance.transform.position;
 
         if(Vector3.Distance(transform.position,playerPos) < pickUpDistance){
             moveDir = (playerPos - transform.position).normalized;
@@ -46,6 +53,13 @@ public class PickUp : MonoBehaviour
             moveDir = Vector3.zero;
             moveSpeed = 0;
         }
+
+        foreach(var i in playingSounds){
+            if(!i.isPlaying){
+                playingSounds.Remove(i);
+                pickUpEffectPool.Push(i.gameObject);
+            }
+        }
     }
 
     private void FixedUpdate(){
@@ -54,9 +68,25 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.GetComponent<PlayerController>()){
+            PlayPickUp();
             DetectPickUpType();
             Destroy(gameObject);
         }
+    }
+
+    private void PlayPickUp(){
+        AudioSource soundToPlay;
+        if(pickUpEffectPool.Count > 0){
+            soundToPlay = pickUpEffectPool.Pop().GetComponent<AudioSource>();
+        }
+        else{
+            GameObject newPickUpEffect = Instantiate(pickUpEffect);
+            newPickUpEffect.transform.parent = pickUpEffect.gameObject.transform.parent;
+            soundToPlay = newPickUpEffect.GetComponent<AudioSource>();
+        }
+
+        soundToPlay.Play();
+        playingSounds.Add(soundToPlay);
     }
 
     private IEnumerator AnimationCurveSpawnPoint(){

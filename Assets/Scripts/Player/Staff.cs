@@ -10,12 +10,13 @@ public class Staff : MonoBehaviour, IWeapon
     [SerializeField] private Transform magicLaserSpawnPoint;
 
     private Animator myAnimator;
+    private AudioSource staffAttack;
 
     readonly int ATTACK_HASH = Animator.StringToHash("Attack");
 
     private void Awake(){
         myAnimator = GetComponent<Animator>();
-        weaponInfoManager = GameObject.FindWithTag("Staff Info Manager").GetComponent<WeaponInfoManager>();
+        staffAttack = GameObject.Find("Staff Attack").GetComponent<AudioSource>();
     }
 
     private void Update(){
@@ -25,6 +26,7 @@ public class Staff : MonoBehaviour, IWeapon
 
     public void Attack(){
         if(Stamina.Instance.currentStamina > 0){
+            staffAttack.Play();
             Stamina.Instance.UseStamina(weaponInfoManager.weaponInfo.weaponStaminaCost);
             myAnimator.SetTrigger(ATTACK_HASH);
         }

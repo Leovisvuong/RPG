@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Animations;
 
 public class PlayerHealth : Singleton<PlayerHealth>
 {
@@ -22,6 +23,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private Flash flash;
     private int healingRoutinesNum = 0;
     private TextMeshProUGUI healthText;
+    private AudioSource playerHit;
 
     const string HEALTH_NUMBER_TEXT = "Health Number";
     const string HEALTH_SLIDER_TEXT = "Health Slider";
@@ -35,6 +37,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         
         flash = GetComponent<Flash>();
         knockback = GetComponent<Knockback>();
+        playerHit = GameObject.Find("Player Hit").GetComponent<AudioSource>();
     }
 
     private void Start(){
@@ -69,6 +72,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     }
 
     public void TakeDamage(int damageAmount, Transform hitTransform){
+        playerHit.Play();
 
         ScreenShakeManager.Instance.ShakeScreeen();
         knockback.GetKnockBack(hitTransform, knockBackThrustAmount);

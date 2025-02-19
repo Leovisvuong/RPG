@@ -16,9 +16,10 @@ public class Sword : MonoBehaviour, IWeapon
     private Transform weaponCollider;
     private Animator myAnimator;
     private GameObject slashAnimation;
+    private AudioSource swordAttack;
     private void Awake(){
         myAnimator = GetComponent<Animator>();
-        weaponInfoManager = GameObject.FindWithTag("Sword Info Manager").GetComponent<WeaponInfoManager>();
+        swordAttack = GameObject.Find("Sword Attack").GetComponent<AudioSource>();
     }
 
     private void Start(){
@@ -33,6 +34,7 @@ public class Sword : MonoBehaviour, IWeapon
 
     public void Attack(){
         if(Stamina.Instance.currentStamina > 0){
+            swordAttack.Play();
             Stamina.Instance.UseStamina(weaponInfoManager.weaponInfo.weaponStaminaCost);
             myAnimator.SetTrigger("Attack");
             weaponCollider.gameObject.SetActive(true);

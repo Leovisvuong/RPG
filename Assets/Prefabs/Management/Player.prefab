@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6477d8bb619dc4f82ab1b122de0768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentActiveWeapon: {fileID: 0}
   isMelee: 1
 --- !u!1 &8962129140098616236
 GameObject:
@@ -488,11 +487,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d0b5d57a82f8499d0af489d6619f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDied: 0
   moveSpeed: 4
   dashSpeed: 4
   myTrailRenderer: {fileID: 8962129140098616235}
   weaponCollider: {fileID: 8962129139912871081}
-  isDashing: 0
 --- !u!50 &8962129140838631664
 Rigidbody2D:
   serializedVersion: 4
@@ -575,7 +574,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackThrustAmount: 10
-  damageRecoveryTime: 1
   timeBetweenHealthRefresh: 10
 --- !u!114 &8962129140838631656
 MonoBehaviour:
@@ -616,6 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98fcda7b7fae504a84b700bba335eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStamina: 0
   timeBetweenStaminaRefresh: 3
 --- !u!114 &1966226102
 MonoBehaviour:
@@ -629,7 +628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c84f20b94b48b345a6967ef00b9e9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributeManager: {fileID: 0}
   health: 0
   stamina: 0
   attack: 0

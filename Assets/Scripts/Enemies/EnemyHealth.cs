@@ -12,15 +12,18 @@ public class EnemyHealth : MonoBehaviour
     private int currentHealth;
     private Flash flash;
     private Experience experienceScript;
+    private AudioSource enemiesHit;
 
     private void Start(){
         flash = GetComponent<Flash>();
         knockback = GetComponent<Knockback>();
         currentHealth = maxHealth;
         experienceScript = GameObject.Find("Player").GetComponent<Experience>();
+        enemiesHit = GameObject.Find("Enemies Hit").GetComponent<AudioSource>();
     }
 
     public void TakeDamage(int damage){
+        enemiesHit.Play();
         currentHealth -= damage;
         knockback.GetKnockBack(PlayerController.Instance.transform,knockBackThrust);
         StartCoroutine(flash.FlashRoutine());

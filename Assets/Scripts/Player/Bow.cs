@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Bow : MonoBehaviour, IWeapon
 {
@@ -13,14 +14,16 @@ public class Bow : MonoBehaviour, IWeapon
     readonly int FIRE_HASH = Animator.StringToHash("Fire");
 
     private Animator myAnimator;
+    private AudioSource bowAttack;
 
     private void Awake(){
         myAnimator = GetComponent<Animator>();
-        weaponInfoManager = GameObject.FindWithTag("Bow Info Manager").GetComponent<WeaponInfoManager>();
+        bowAttack = GameObject.Find("Bow Attack").GetComponent<AudioSource>();
     }
 
     public void Attack(){
         if(Stamina.Instance.currentStamina > 0){
+            bowAttack.Play();
             Stamina.Instance.UseStamina(weaponInfoManager.weaponInfo.weaponStaminaCost);
             myAnimator.SetTrigger(FIRE_HASH); 
             GameObject newArrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, ActiveWeapon.Instance.transform.rotation);

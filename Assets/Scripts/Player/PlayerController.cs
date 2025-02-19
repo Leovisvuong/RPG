@@ -22,6 +22,8 @@ public class PlayerController : Singleton<PlayerController>
     private Animator myAnimator;
     private SpriteRenderer mySpriteRenderer;
     private Knockback knockback;
+    private AudioSource walk;
+    private AudioSource dash;
     private float startingMoveSpeed;
     private bool facingLeft = false;
     private bool isDashing = false;
@@ -32,6 +34,8 @@ public class PlayerController : Singleton<PlayerController>
         myAnimator = GetComponent<Animator>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         knockback = GetComponent<Knockback>();
+        walk = GameObject.Find("Walk").GetComponent<AudioSource>();
+        dash = GameObject.Find("Dash").GetComponent<AudioSource>();
     }
 
     private void Start(){
@@ -75,6 +79,11 @@ public class PlayerController : Singleton<PlayerController>
         if(knockback.GettingKnockedBack){
             return;
         }
+        
+        string currentAnimator = myAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        if(currentAnimator == "Running" && !walk.isPlaying){
+            walk.Play();
+        }
         rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
     }
     private void AdjustPlayerFacingDirection(){
@@ -97,6 +106,8 @@ public class PlayerController : Singleton<PlayerController>
                 Warning.Instance.DoWarn("Run Out Of Stamina!",Color.yellow);
                 return;
             }
+
+            dash.Play();
             Stamina.Instance.UseStamina(1);
             isDashing = true;
             moveSpeed *= dashSpeed;

@@ -6318,7 +6318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 2198228756204649745, guid: 667544efcef480045872490a3ca94738, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -6857,7 +6857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 8913327739214379802, guid: 7a35c95249be7084caa4cbbd544fa5e9, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -7203,7 +7203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e05f28a0276f64394a2ca04ceb8197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 8913327739214379802, guid: 7a35c95249be7084caa4cbbd544fa5e9, type: 3}
 --- !u!1 &1235684070038006377
 GameObject:
   m_ObjectHideFlags: 0
@@ -7298,7 +7298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 8913327739214379802, guid: 7a35c95249be7084caa4cbbd544fa5e9, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -7999,7 +7999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 3960843647301447826, guid: b47bb5d93d016c44fa6a7f5ed8191be9, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -8275,7 +8275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d6feeb51a2069458c285dc37773336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInfoManager: {fileID: 0}
+  weaponInfoManager: {fileID: 7980770420321853180, guid: c5a0f2ae44b4d3049b6843856ada0f4e, type: 3}
   materialInfo: {fileID: 0}
   armorInfoManager: {fileID: 0}
   infoUIWithAttributes: {fileID: 6762723031424915859}
@@ -8517,7 +8517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e05f28a0276f64394a2ca04ceb8197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 2808160021436164931, guid: e0b0ee3d313f230448b6de1d7250d09b, type: 3}
 --- !u!1 &2055604086915670527
 GameObject:
   m_ObjectHideFlags: 0
@@ -8816,7 +8816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 2808160021436164931, guid: e0b0ee3d313f230448b6de1d7250d09b, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -9039,7 +9039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e05f28a0276f64394a2ca04ceb8197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 3440806467733665401, guid: 9424dcf78b1a1a047a42330b2ba98e3f, type: 3}
 --- !u!1 &2286049475299895494
 GameObject:
   m_ObjectHideFlags: 0
@@ -10011,7 +10011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 3440806467733665401, guid: 9424dcf78b1a1a047a42330b2ba98e3f, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -10463,7 +10463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 2808160021436164931, guid: e0b0ee3d313f230448b6de1d7250d09b, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -11034,7 +11034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 3440806467733665401, guid: 9424dcf78b1a1a047a42330b2ba98e3f, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -11139,7 +11139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e05f28a0276f64394a2ca04ceb8197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 1155908573507082710, guid: 4ced012e49bb3ee4c8a513615e897c0a, type: 3}
 --- !u!1 &3291383000238366831
 GameObject:
   m_ObjectHideFlags: 0
@@ -12245,7 +12245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 3960843647301447826, guid: b47bb5d93d016c44fa6a7f5ed8191be9, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -12626,7 +12626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d6feeb51a2069458c285dc37773336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInfoManager: {fileID: 0}
+  weaponInfoManager: {fileID: 8077785115328499095, guid: f51ea56cb0e7cfc43a08639003856dba, type: 3}
   materialInfo: {fileID: 0}
   armorInfoManager: {fileID: 0}
   infoUIWithAttributes: {fileID: 6762723031424915859}
@@ -13690,7 +13690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e05f28a0276f64394a2ca04ceb8197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 3896223713592958228, guid: 932f239f5e664b94684bcfb66aa1fd35, type: 3}
 --- !u!1 &4877795662595668625
 GameObject:
   m_ObjectHideFlags: 0
@@ -14263,7 +14263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 8698022116229356601, guid: 91067289a294d4d488043097b561ff98, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -15453,7 +15453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 1155908573507082710, guid: 4ced012e49bb3ee4c8a513615e897c0a, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -16131,7 +16131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 8913327739214379802, guid: 7a35c95249be7084caa4cbbd544fa5e9, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -16432,7 +16432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e05f28a0276f64394a2ca04ceb8197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 8698022116229356601, guid: 91067289a294d4d488043097b561ff98, type: 3}
 --- !u!1 &6021810155839027743
 GameObject:
   m_ObjectHideFlags: 0
@@ -17010,7 +17010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e05f28a0276f64394a2ca04ceb8197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 3960843647301447826, guid: b47bb5d93d016c44fa6a7f5ed8191be9, type: 3}
 --- !u!1 &6212922052977996746
 GameObject:
   m_ObjectHideFlags: 0
@@ -17358,7 +17358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 8698022116229356601, guid: 91067289a294d4d488043097b561ff98, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -18512,7 +18512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 2198228756204649745, guid: 667544efcef480045872490a3ca94738, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -19406,7 +19406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 2808160021436164931, guid: e0b0ee3d313f230448b6de1d7250d09b, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -19586,7 +19586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d6feeb51a2069458c285dc37773336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInfoManager: {fileID: 0}
+  weaponInfoManager: {fileID: 1421852155885226527, guid: fc66ac63dac209f4aaef490fb24560e2, type: 3}
   materialInfo: {fileID: 0}
   armorInfoManager: {fileID: 0}
   infoUIWithAttributes: {fileID: 6762723031424915859}
@@ -19937,7 +19937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 1155908573507082710, guid: 4ced012e49bb3ee4c8a513615e897c0a, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -20043,7 +20043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 3896223713592958228, guid: 932f239f5e664b94684bcfb66aa1fd35, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -20147,7 +20147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e05f28a0276f64394a2ca04ceb8197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 2198228756204649745, guid: 667544efcef480045872490a3ca94738, type: 3}
 --- !u!1 &7685831767104167850
 GameObject:
   m_ObjectHideFlags: 0
@@ -20495,7 +20495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 1155908573507082710, guid: 4ced012e49bb3ee4c8a513615e897c0a, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -21536,7 +21536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 3440806467733665401, guid: 9424dcf78b1a1a047a42330b2ba98e3f, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}
@@ -22400,7 +22400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfoManager: {fileID: 0}
   materialInfo: {fileID: 0}
-  armorInfoManager: {fileID: 0}
+  armorInfoManager: {fileID: 3896223713592958228, guid: 932f239f5e664b94684bcfb66aa1fd35, type: 3}
   infoUIWithAttributes: {fileID: 6762723031424915859}
   infoUINoAttributes: {fileID: 1941215675818790594}
   infoUI: {fileID: 1393224911417501754}

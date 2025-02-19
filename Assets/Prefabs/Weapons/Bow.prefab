@@ -151,6 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02823e34a83c09344a111c3be0a292ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInfoManager: {fileID: 0}
+  weaponInfoManager: {fileID: 7980770420321853180, guid: c5a0f2ae44b4d3049b6843856ada0f4e, type: 3}
   arrowPrefab: {fileID: 9085842537966361365, guid: 70b3027f268fbd748ab82b23ede0ce95, type: 3}
   arrowSpawnPoint: {fileID: 6479842840001200153}
