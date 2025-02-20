@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Physic Head
   m_EditorClassIdentifier: 
   armorHealthUp: 50
-  armorStaminaUp: 15
+  armorStaminaUp: 25
   armorAttackUp: 3
   armorMagicUp: 0
   armorDescription: increase attribute when equipped (best for physic damage)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magic Body
   m_EditorClassIdentifier: 
   armorHealthUp: 45
-  armorStaminaUp: 30
+  armorStaminaUp: 50
   armorAttackUp: 0
   armorMagicUp: 1
   armorDescription: increase attribute when equipped (best for magic damage)

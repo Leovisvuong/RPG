@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03eba619d8ab7a47abf221784c37e7b, type: 3}
   m_Name: Magic Arm
   m_EditorClassIdentifier: 
-  armorHealthUp: 5
-  armorStaminaUp: 15
+  armorHealthUp: 10
+  armorStaminaUp: 30
   armorAttackUp: 0
   armorMagicUp: 3
   armorDescription: increase attribute when equipped (best for magic damage)

@@ -13,7 +13,7 @@ public class PickUpSpawner : MonoBehaviour
             int randomAmountOfPrefab = UnityEngine.Random.Range(Convert.ToInt32(maxPrefabAmount[randomNum] / 10), maxPrefabAmount[randomNum] + 1);
 
             if(randomAmountOfPrefab == 0) randomAmountOfPrefab++;
-            
+
             GameObject spawnPrefab = pickUpPrefabs[randomNum];
             for(int i = 0; i < randomAmountOfPrefab; i++){
                 Instantiate(spawnPrefab, transform.position, Quaternion.identity);

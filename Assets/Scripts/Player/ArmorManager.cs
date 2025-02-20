@@ -17,6 +17,7 @@ public class ArmorManager : Singleton<ArmorManager>
 
     public void UpdateArmorAttribute(){
         ResetAttribute();
+
         foreach(var i in armorInfoManagers){
             if(i.isEquipped){
                 int tmp = 1;
@@ -24,6 +25,7 @@ public class ArmorManager : Singleton<ArmorManager>
                 AddAttribute(i.armorInfo.armorHealthUp, i.armorInfo.armorStaminaUp, i.armorInfo.armorAttackUp * tmp, i.armorInfo.armorMagicUp * tmp);
             }
         }
+
         PlayerHealth.Instance.SetMaxHealth();
         Stamina.Instance.SetMaxStamina();
     }

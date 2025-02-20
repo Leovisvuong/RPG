@@ -8,18 +8,20 @@ using TMPro;
 public class PlayerHealth : Singleton<PlayerHealth>
 {
     public bool isDead {get; private set;}
+    public int maxHealth {get; private set;}
+    public int currentHealth;
         
     [SerializeField] private float knockBackThrustAmount = 10f;
     [SerializeField] private float timeBetweenHealthRefresh = 5;
+    [SerializeField] private float timeTakeDamageCoolDown = 0.5f;
 
-    private int maxHealth;
     private Slider healthSlider;
-    private int currentHealth;
     private Knockback knockback;
     private Flash flash;
     private int healingRoutinesNum = 0;
     private TextMeshProUGUI healthText;
     private AudioSource playerHit;
+    private bool canTakeDamage;
 
     const string HEALTH_NUMBER_TEXT = "Health Number";
     const string HEALTH_SLIDER_TEXT = "Health Slider";
@@ -38,6 +40,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     private void Start(){
         isDead = false;
+        canTakeDamage = true;
         SetMaxHealth();
         currentHealth = maxHealth;
         UpdateHealthOutput();
@@ -68,12 +71,16 @@ public class PlayerHealth : Singleton<PlayerHealth>
     }
 
     public void TakeDamage(int damageAmount, Transform hitTransform){
+        if(!canTakeDamage) return;
+
         playerHit.Play();
 
+        canTakeDamage = false;
         ScreenShakeManager.Instance.ShakeScreeen();
         knockback.GetKnockBack(hitTransform, knockBackThrustAmount);
         StartCoroutine(flash.FlashRoutine());
         currentHealth -= damageAmount;
+        StartCoroutine(CanTakeDamageCountDown());
         if(currentHealth < 0) currentHealth = 0;
         UpdateHealthOutput();
         CheckIfPlayerDeath();
@@ -107,6 +114,11 @@ public class PlayerHealth : Singleton<PlayerHealth>
         yield return new WaitForSeconds(timeBetweenHealthRefresh);
         healingRoutinesNum = 0;
         if(!FreezeManager.Instance.gamePause) HealPlayer(1);
+    }
+
+    private IEnumerator CanTakeDamageCountDown(){
+        yield return new WaitForSeconds(timeTakeDamageCoolDown);
+        canTakeDamage = true;
     }
 
     private void UpdateHealthOutput(){

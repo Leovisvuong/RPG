@@ -5,11 +5,11 @@ using UnityEngine.UI;
 public class Stamina : Singleton<Stamina>
 {
     public int currentStamina;
+    public int maxStamina {get; private set;}
 
     [SerializeField] private float timeBetweenStaminaRefresh = 1.5f;
     
     private Slider staminaSlider;
-    private int maxStamina;
     private TextMeshProUGUI staminaText;
 
     const string STAMINA_NUMBER_TEXT = "Stamina Number";

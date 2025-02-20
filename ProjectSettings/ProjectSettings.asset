@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Leovis
   productName: Mysterious Odyssey
-  defaultCursor: {fileID: 2800000, guid: 9e38b62dabd085149ab4a80abeb1c554, type: 3}
+  defaultCursor: {fileID: 0}
   cursorHotspot: {x: 120, y: 120}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1

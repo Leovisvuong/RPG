@@ -11,8 +11,8 @@ public class PlayerAttribute : Singleton<PlayerAttribute>
     {
         base.Awake();
 
-        health = 15;
-        stamina = 30;
+        health = 20;
+        stamina = 60;
         attack = 1;
         magic = 1;
         pointRemain = 3;
