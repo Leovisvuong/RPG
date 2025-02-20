@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1801deaa10ca65f47ad9986126c25fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInfoManager: {fileID: 1421852155885226527, guid: fc66ac63dac209f4aaef490fb24560e2, type: 3}
+  weaponInfoManager: {fileID: 2385928325317509000, guid: 3d0c404ddd6525b488b3bfe2efb2ce4f, type: 3}
   magicLaser: {fileID: 7632024692091117396, guid: eaa7ca16de06e9a459c9bfc52dc70c54, type: 3}
   magicLaserSpawnPoint: {fileID: 5664275703307535738}
 --- !u!212 &-8215716674827746308

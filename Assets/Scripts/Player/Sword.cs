@@ -1,25 +1,29 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Timeline;
 
 public class Sword : MonoBehaviour, IWeapon
 {
     [SerializeField] private GameObject SlashAnimationPrefab;
     [SerializeField] private Transform slashAnimationSpawnPoint;
     [SerializeField] private float swordAttackCD = 0.5f;
-    [SerializeField] private WeaponInfoManager weaponInfoManager;
 
+    [SerializeField] private WeaponInfoManager weaponInfoManager;
     private Transform weaponCollider;
     private Animator myAnimator;
     private GameObject slashAnimation;
     private AudioSource swordAttack;
+    private bool findDone = false;
     private void Awake(){
         myAnimator = GetComponent<Animator>();
         swordAttack = GameObject.Find("Sword Attack").GetComponent<AudioSource>();
+        GameObject weaponInfoContainer = GameObject.Find(weaponInfoManager.weaponInfo.weaponName + " Info Container");
+
+        if(!weaponInfoContainer){
+            weaponInfoContainer = Instantiate(weaponInfoManager.gameObject);
+            weaponInfoContainer.name = weaponInfoManager.weaponInfo.weaponName + " Info Container";
+            weaponInfoContainer.transform.parent = GameObject.Find("Managers").transform;
+        }
+
+        weaponInfoManager = weaponInfoContainer.GetComponent<WeaponInfoManager>();
     }
 
     private void Start(){

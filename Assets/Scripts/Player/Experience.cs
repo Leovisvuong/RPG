@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 using TMPro;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +10,7 @@ public class Experience : Singleton<Experience>
     private int currentExp;
     private int levelUpExp;
     private int currentLevel;
+    private AudioSource levelUpSound;
 
     const string EXP_NUMBER_TEXT = "Exp Number Text";
     const string EXP_SLIDER_TEXT = "Exp Slider";
@@ -25,6 +22,7 @@ public class Experience : Singleton<Experience>
         currentExp = 0;
         currentLevel = 1;
         levelUpExp = Convert.ToInt32(currentLevel * 5 / 2);
+        levelUpSound = GameObject.Find("Level Up").GetComponent<AudioSource>();
     }
 
     public void AddExp(int amount){
@@ -38,6 +36,7 @@ public class Experience : Singleton<Experience>
             currentLevel++;
             levelUpExp = Convert.ToInt32(currentLevel * 5 / 2);
             PlayerAttribute.Instance.AddPoint();
+            levelUpSound.Play();
         }
         UpdateExpOutput();
     }

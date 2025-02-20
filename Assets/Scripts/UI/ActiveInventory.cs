@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ActiveInventory : Singleton<ActiveInventory>
@@ -56,7 +54,6 @@ public class ActiveInventory : Singleton<ActiveInventory>
         }
 
         GameObject weaponToSpawn = weaponInfo.weaponPrefab;
-
         GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform);
 
         // ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0,0,0);

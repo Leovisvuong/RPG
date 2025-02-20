@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +25,9 @@ public class ItemsInfoButtonManager : MonoBehaviour
     private void Awake()
     {
         enterInfoUI = GetComponentInChildren<Button>();
+        if(weaponInfoManager){
+            SetWeaponInfoManager();
+        }
     }
 
     private void Start()
@@ -45,6 +44,20 @@ public class ItemsInfoButtonManager : MonoBehaviour
         if(weaponInfoManager){
             reroll.onClick.AddListener(RerollWeapon);
         }
+    }
+
+    private void SetWeaponInfoManager(){
+        string weaponName = weaponInfoManager.weaponInfo.weaponName;
+
+        GameObject weaponInfoContainer = GameObject.Find(weaponName + " Info Container");
+
+        if(!weaponInfoContainer){
+            weaponInfoContainer = Instantiate(weaponInfoManager.gameObject);
+            weaponInfoContainer.name = weaponName + " Info Container";
+            weaponInfoContainer.transform.parent = GameObject.Find("Managers").transform;
+        }
+    
+        weaponInfoManager = weaponInfoContainer.GetComponent<WeaponInfoManager>();
     }
 
     private void EquipArmor(){

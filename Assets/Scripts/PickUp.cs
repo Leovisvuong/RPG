@@ -1,8 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Net;
-using UnityEditor.ProjectWindowCallback;
-using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 using UnityEngine;
 
 public class PickUp : MonoBehaviour
@@ -20,21 +16,21 @@ public class PickUp : MonoBehaviour
     [SerializeField] private AnimationCurve animationCurve;
     [SerializeField] private float heighty = 1.5f;
     [SerializeField] private float popDuration = 1f;
-    
-    private Stack<GameObject> pickUpEffectPool;
-    private List<AudioSource> playingSounds;
+
     private Vector3 moveDir;
     private Rigidbody2D rb;
     private GameObject player;
-    private GameObject pickUpEffect;
+    private AudioSource GoldEffect;
+    private AudioSource StaminaEffect;
+    private AudioSource HealthEffect;
     private Vector3 playerPos;
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         player = PlayerController.Instance.gameObject;
-        pickUpEffectPool = new Stack<GameObject>();
-        playingSounds = new List<AudioSource>();
-        pickUpEffect = GameObject.Find("Pick Up Effect");
+        GoldEffect = GameObject.Find("Gold Gain").GetComponent<AudioSource>();
+        StaminaEffect = GameObject.Find("Stamina Gain").GetComponent<AudioSource>();
+        HealthEffect = GameObject.Find("Health Gain").GetComponent<AudioSource>();
     }
 
     private void Start(){
@@ -53,13 +49,6 @@ public class PickUp : MonoBehaviour
             moveDir = Vector3.zero;
             moveSpeed = 0;
         }
-
-        foreach(var i in playingSounds){
-            if(!i.isPlaying){
-                playingSounds.Remove(i);
-                pickUpEffectPool.Push(i.gameObject);
-            }
-        }
     }
 
     private void FixedUpdate(){
@@ -68,25 +57,15 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.GetComponent<PlayerController>()){
-            PlayPickUp();
             DetectPickUpType();
             Destroy(gameObject);
         }
     }
 
-    private void PlayPickUp(){
-        AudioSource soundToPlay;
-        if(pickUpEffectPool.Count > 0){
-            soundToPlay = pickUpEffectPool.Pop().GetComponent<AudioSource>();
+    private void PlayPickUp(AudioSource pickUpEffect){
+        if(!pickUpEffect.isPlaying){
+            pickUpEffect.Play();
         }
-        else{
-            GameObject newPickUpEffect = Instantiate(pickUpEffect);
-            newPickUpEffect.transform.parent = pickUpEffect.gameObject.transform.parent;
-            soundToPlay = newPickUpEffect.GetComponent<AudioSource>();
-        }
-
-        soundToPlay.Play();
-        playingSounds.Add(soundToPlay);
     }
 
     private IEnumerator AnimationCurveSpawnPoint(){
@@ -113,12 +92,15 @@ public class PickUp : MonoBehaviour
         switch(pickUpType){
             case PickUpType.GoldCoin:
                 EconomyManager.Instance.UpdateCurrentGold(1);
+                PlayPickUp(GoldEffect);
                 break;
             case PickUpType.HealthGlobe:
                 player.GetComponent<PlayerHealth>().HealPlayer(1);
+                PlayPickUp(HealthEffect);
                 break;
             case PickUpType.StamineGlobe:
                 Stamina.Instance.RefreshStamina(5);
+                PlayPickUp(StaminaEffect);
                 break;
             
         }

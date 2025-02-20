@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -21,6 +20,7 @@ public class TransparentDetection : MonoBehaviour
     }
 
     public void DoFadeClear(){
+        if(Time.timeScale < 1) return;
         foreach(var i in images){
             if(i != null) StartCoroutine(FadeRoutine(i, fadeTime, i.color.a, transparencyAmount));
         }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armorHealthUp: 27
   armorStaminaUp: 5
-  armorAttackUp: 4
+  armorAttackUp: 3
   armorMagicUp: 0
   armorDescription: increase attribute when equipped (best for physic damage)
   armorName: Physic Arm

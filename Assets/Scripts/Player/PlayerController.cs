@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
@@ -44,6 +41,7 @@ public class PlayerController : Singleton<PlayerController>
         startingMoveSpeed = moveSpeed;
 
         ActiveInventory.Instance.EquipStartingWeapon();
+        EconomyManager.Instance.UpdateCurrentGold(0);
     }
 
     private void OnEnable() {

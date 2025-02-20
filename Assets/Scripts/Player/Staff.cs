@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class Staff : MonoBehaviour, IWeapon
 {
-    [SerializeField] private WeaponInfoManager weaponInfoManager;
     [SerializeField] private GameObject magicLaser;
     [SerializeField] private Transform magicLaserSpawnPoint;
+    [SerializeField] private WeaponInfoManager weaponInfoManager;
+
 
     private Animator myAnimator;
     private AudioSource staffAttack;
@@ -17,6 +16,15 @@ public class Staff : MonoBehaviour, IWeapon
     private void Awake(){
         myAnimator = GetComponent<Animator>();
         staffAttack = GameObject.Find("Staff Attack").GetComponent<AudioSource>();
+        GameObject weaponInfoContainer = GameObject.Find(weaponInfoManager.weaponInfo.weaponName + " Info Container");
+
+        if(!weaponInfoContainer){
+            weaponInfoContainer = Instantiate(weaponInfoManager.gameObject);
+            weaponInfoContainer.name = weaponInfoManager.weaponInfo.weaponName + " Info Container";
+            weaponInfoContainer.transform.parent = GameObject.Find("Managers").transform;
+        }
+
+        weaponInfoManager = weaponInfoContainer.GetComponent<WeaponInfoManager>();
     }
 
     private void Update(){

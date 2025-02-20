@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using UnityEditor.Search;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class Bow : MonoBehaviour, IWeapon
 {
-    [SerializeField] private WeaponInfoManager weaponInfoManager;
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private Transform arrowSpawnPoint;
+    [SerializeField] private WeaponInfoManager weaponInfoManager;
 
     readonly int FIRE_HASH = Animator.StringToHash("Fire");
 
@@ -19,6 +14,15 @@ public class Bow : MonoBehaviour, IWeapon
     private void Awake(){
         myAnimator = GetComponent<Animator>();
         bowAttack = GameObject.Find("Bow Attack").GetComponent<AudioSource>();
+        GameObject weaponInfoContainer = GameObject.Find(weaponInfoManager.weaponInfo.weaponName + " Info Container");
+        
+        if(!weaponInfoContainer){
+            weaponInfoContainer = Instantiate(weaponInfoManager.gameObject);
+            weaponInfoContainer.name = weaponInfoManager.weaponInfo.weaponName + " Info Container";
+            weaponInfoContainer.transform.parent = GameObject.Find("Managers").transform;
+        }
+
+        weaponInfoManager = weaponInfoContainer.GetComponent<WeaponInfoManager>();
     }
 
     public void Attack(){

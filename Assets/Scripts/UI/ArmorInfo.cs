@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "New Armor")]
@@ -12,6 +10,4 @@ public class ArmorInfo : ScriptableObject
     public string armorDescription;
     public string armorName;
     public string armorType;
-    public bool isEquipped = false;
-    public bool isGained = false;
 }

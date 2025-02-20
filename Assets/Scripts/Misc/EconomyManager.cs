@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -9,6 +7,11 @@ public class EconomyManager : Singleton<EconomyManager>
     public int currentGold = 0;
 
     const string COIN_AMOUNT_TEXT = "Gold Amount Text";
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     public void UpdateCurrentGold(int amount){
         currentGold += amount;
