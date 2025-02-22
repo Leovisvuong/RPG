@@ -24,6 +24,7 @@ public class PlayerController : Singleton<PlayerController>
     private float startingMoveSpeed;
     private bool facingLeft = false;
     private bool isDashing = false;
+
     protected override void Awake(){
         base.Awake();
         playerControls = new PlayerControls();
@@ -55,6 +56,9 @@ public class PlayerController : Singleton<PlayerController>
     private void Update() {
         if(playerDied || FreezeManager.Instance.gamePause) return;
         PlayerInput();
+        if(!ActiveWeapon.Instance.gameObject.activeSelf) ActiveWeapon.Instance.gameObject.SetActive(true);
+        // AdjustPlayerFacingDirection();
+        // Move();
     }
 
     private void FixedUpdate() {
@@ -68,12 +72,14 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void PlayerInput() {
-        movement = playerControls.Movement.Move.ReadValue<Vector2>();
+        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         myAnimator.SetFloat("moveX",movement.x);
         myAnimator.SetFloat("moveY",movement.y);
     }
 
     private void Move() {
+        // Debug.Log(movement);
+        // if(Input.GetKeyDown(KeyCode.S)) Debug.Log("s");
         if(knockback.GettingKnockedBack){
             return;
         }

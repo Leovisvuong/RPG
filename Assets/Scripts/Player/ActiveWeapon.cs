@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class ActiveWeapon : Singleton<ActiveWeapon>
 {
+    public bool isAttacking;
     public MonoBehaviour currentActiveWeapon {get; private set;}
     
     private PlayerControls playerControls;
     private float timeBetweenAttacks;
-    private bool attackButtonDown, isAttacking = false;
+    private bool attackButtonDown;
 
     protected override void Awake()
     {

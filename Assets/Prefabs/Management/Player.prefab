@@ -515,8 +515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a838c1d0207e074994edf96efad7ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
   knockBackThrustAmount: 10
   timeBetweenHealthRefresh: 10
+  timeTakeDamageCoolDown: 0.5
 --- !u!114 &8962129140838631656
 MonoBehaviour:
   m_ObjectHideFlags: 0
